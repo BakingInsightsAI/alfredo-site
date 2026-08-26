@@ -243,6 +243,38 @@
     background:#fff;border:1px solid var(--ink-12);border-radius:100px;
     padding:7px 16px;
   }
+  /* ---------- chat panel ---------- */
+  .chatcard{
+    background:#fff;border:1px solid var(--ink-12);border-radius:16px;
+    box-shadow:0 6px 24px rgba(27,45,40,.06);display:flex;flex-direction:column;
+    overflow:hidden;
+  }
+  .chat-head{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:14px 18px;border-bottom:1px solid var(--ink-12);
+  }
+  .chat-title{font-family:'Nunito',sans-serif;font-weight:800;font-size:.95rem;display:flex;align-items:center;gap:8px;}
+  .chat-dot{width:10px;height:10px;border-radius:50%;background:var(--mango);display:inline-block;}
+  .chat-body{padding:18px;display:flex;flex-direction:column;gap:10px;min-height:220px;}
+  .msg{
+    max-width:85%;padding:10px 14px;border-radius:14px;font-size:.88rem;line-height:1.5;
+  }
+  .msg.bot{background:var(--cream);border:1px solid var(--ink-12);border-bottom-left-radius:4px;align-self:flex-start;}
+  .msg.user{background:var(--teal);color:var(--cream);border-bottom-right-radius:4px;align-self:flex-end;}
+  .msg.typing{color:var(--ink-60);font-style:italic;}
+  .chat-chips{display:flex;flex-wrap:wrap;gap:8px;padding:0 18px 14px;}
+  .chip-q{
+    font-family:'Inter',sans-serif;font-size:.78rem;font-weight:500;color:var(--teal);
+    background:rgba(14,124,102,.07);border:1px solid rgba(14,124,102,.3);border-radius:100px;
+    padding:7px 14px;cursor:pointer;transition:background .15s;
+  }
+  .chip-q:hover{background:rgba(14,124,102,.14);}
+  .chip-q:disabled{opacity:.35;cursor:default;}
+  .chat-input{
+    border-top:1px solid var(--ink-12);padding:13px 18px;font-size:.85rem;color:var(--ink-60);
+  }
+  .chat-cursor{animation:blink 1.1s step-end infinite;color:var(--teal);margin-left:2px;}
+  @keyframes blink{50%{opacity:0;}}
 
   /* ---------- status ---------- */
   .status{background:#fff;border-top:1px solid var(--ink-12);}
@@ -318,8 +350,8 @@
   <div class="hero-inner">
     <div>
       <span class="eyebrow">For independent restaurants and bars · patent pending</span>
-      <h1>Your POS already knows the answers. <em>Alfredo asks the questions.</em></h1>
-      <p class="lede">Every week, Alfredo reads your own transaction data and hands you a short list of moves worth making: a price to test, a pairing to push, a competitor shift to watch. Then it measures what actually happened. Every number is real, or it is not shown.</p>
+      <h1>Introducing <em>Alfredo</em>: your sous chef for the business side.</h1>
+      <p class="lede">Your POS already knows the answers. Alfredo asks the questions. Every week it reads your own transaction data and hands you a short list of moves worth making: a price to test, a pairing to push, a competitor shift to watch. Then it measures what actually happened. Every number is real, or it is not shown.</p>
       <div class="hero-ctas">
         <a class="btn mango" href="#pilot">Request a pilot</a>
         <a class="btn ghost" href="#how">See how it works</a>
@@ -468,6 +500,33 @@
         <h3><span class="chip sun" style="margin-right:8px;">On the roadmap</span>Live on your digital menu</h3>
         <p>Direct integration with digital menus, so a price or layout test goes live on the menu your guests actually see and comes back with a verdict. Not built yet. When it ships, it ships measured.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="chat">
+  <div class="wrap intel-inner">
+    <div>
+      <span class="kicker">Ask Alfredo</span>
+      <h2 class="section-title">Got a question? Just ask.</h2>
+      <p class="section-lede">A chat panel lives inside every tab. Ask how the week is going, why a number moved, or what to try next, and Alfredo answers in plain language from your own data. Every chart and every recommendation has an ask button right next to it, so the question starts with the context already loaded.</p>
+      <p class="section-lede" style="margin-top:16px;">And when your data cannot answer something, Alfredo says so instead of guessing. Same rule everywhere.</p>
+      <p style="margin-top:26px;"><a class="btn" href="#pilot">Ask it about your restaurant</a></p>
+    </div>
+    <div class="chatcard" aria-label="Sample conversation with Alfredo">
+      <div class="chat-head">
+        <span class="chat-title"><span class="chat-dot"></span>Alfredo</span>
+        <span class="sample-tag">sample conversation · sample data</span>
+      </div>
+      <div class="chat-body" id="chatBody">
+        <div class="msg bot">Morning. Ask me anything about the business, or tap one of these to see how I answer.</div>
+      </div>
+      <div class="chat-chips" id="chatChips">
+        <button class="chip-q" data-q="How am I doing this week?" data-a="Revenue is up 4.2% week over week, most of it from Friday night. Orders are flat and average check is up $1.10. One thing to watch: Monday is still your softest day by a wide margin.">How am I doing this week?</button>
+        <button class="chip-q" data-q="What are my best sellers?" data-a="Wings lead on volume, but your best seller is not your best earner: your highest margin mover is a mid shelf pour. Want the list ranked by profit instead of popularity?">What are my best sellers?</button>
+        <button class="chip-q" data-q="What do you recommend?" data-a="Three moves on this week's board: a price test on your fountain soda, a pairing nudge for tater tots with your wheat beer, and one competitor pattern worth reading. Want to start with the one worth the most?">What do you recommend?</button>
+      </div>
+      <div class="chat-input">Ask about your business<span class="chat-cursor">|</span></div>
     </div>
   </div>
 </section>
@@ -677,5 +736,31 @@
   </div>
 </footer>
 
+<script>
+(function(){
+  var body = document.getElementById('chatBody');
+  var chips = document.querySelectorAll('.chip-q');
+  chips.forEach(function(chip){
+    chip.addEventListener('click', function(){
+      if (chip.disabled) return;
+      chip.disabled = true;
+      var u = document.createElement('div');
+      u.className = 'msg user';
+      u.textContent = chip.dataset.q;
+      body.appendChild(u);
+      var t = document.createElement('div');
+      t.className = 'msg bot typing';
+      t.textContent = 'Alfredo is thinking';
+      body.appendChild(t);
+      t.scrollIntoView({block:'nearest'});
+      setTimeout(function(){
+        t.classList.remove('typing');
+        t.textContent = chip.dataset.a;
+        t.scrollIntoView({block:'nearest'});
+      }, 900);
+    });
+  });
+})();
+</script>
 </body>
 </html>
