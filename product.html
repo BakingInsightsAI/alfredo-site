@@ -38,6 +38,50 @@
       <div class="step"><span class="step-num">05</span><h3>Learn</h3><p>Every verdict feeds back into the ranking. The board you see in month six knows what your floor already taught it.</p></div>
     </div>
     <p class="loop-return">step 05 feeds step 02 <span class="mono">· the loop is the product</span></p>
+
+    <div class="viz-grid" style="margin-top:56px;">
+      <div class="vizcard">
+        <div class="radius-title">
+          <h3>What "measured" actually looks like</h3>
+          <span class="sample-tag">sample data</span>
+        </div>
+        <div class="card-top" style="margin-top:6px;">
+          <span class="chip teal">Marked done · Pricing</span>
+        </div>
+        <h3 style="font-size:1.02rem;font-weight:800;margin:8px 0 4px;">Raise House Lager from $6.50 to $7.00</h3>
+        <p style="font-size:.85rem;color:var(--ink-60);">Projected +$11.40/wk if it holds. Here is what the weeks actually said:</p>
+        <div class="trackrow">
+          <div class="wk good">W1</div>
+          <div class="wk good">W2</div>
+          <div class="wk bad">W3</div>
+          <div class="wk good">W4</div>
+        </div>
+        <p class="track-legend">green: on target · red: below · gray: not enough data that week</p>
+        <div class="outcome">
+          <span class="mono">Measured: +$9.80/wk attributable</span>
+          <small>Compared against a control item, with what you would have made anyway subtracted out. Measured under projection, and the board says so.</small>
+        </div>
+      </div>
+
+      <div class="vizcard">
+        <div class="radius-title">
+          <h3>Every test ends in a verdict</h3>
+          <span class="sample-tag">sample data</span>
+        </div>
+        <div class="nopeek">While a test is running, no interim results are shown. Checking results mid test inflates false positives, so the product does not allow it.</div>
+        <div class="card-top">
+          <span class="chip hollow">Menu test · completed</span>
+        </div>
+        <h3 style="font-size:1.02rem;font-weight:800;margin:8px 0 4px;">Reprice Garlic Fries from $5.50 to $6.50</h3>
+        <div class="verdict-strip">
+          <span class="vbadge worked">Worked</span>
+          <span class="vbadge noeffect">No effect</span>
+          <span class="vbadge backfired on">Backfired</span>
+        </div>
+        <p style="font-size:.85rem;color:var(--ink-60);">Units fell 22% and net revenue came out $41/wk below baseline. The dollar jump was too big for this item.</p>
+        <p class="rollback"><strong>Rolled back to $5.50.</strong> The engine logged the miss, and next week's pricing suggestions learned from it. A tool that cannot say backfired cannot be trusted when it says worked.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -126,6 +170,54 @@
   </div>
 </section>
 
+<section id="regulars">
+  <div class="wrap intel-inner">
+    <div>
+      <span class="kicker">Customer intelligence</span>
+      <h2 class="section-title">Your regulars, found in your own data.</h2>
+      <p class="section-lede">Alfredo works out who your confirmed guests and regulars are from the transaction data you already have. No loyalty program, no app, no sign up sheet. See who keeps the lights on, how regulars differ from occasional visitors, and which patterns deserve a nudge.</p>
+      <p class="section-lede" style="margin-top:16px;">And in keeping with the numbers rule: only confirmed guests are counted. Alfredo never inflates the panel with estimated crowd sizes.</p>
+    </div>
+    <div class="vizcard" aria-label="Regulars vs occasional guests comparison">
+      <div class="radius-title">
+        <h3>Regulars vs occasional guests</h3>
+        <span class="sample-tag">sample data</span>
+      </div>
+      <div class="ci-kpis">
+        <div class="ci-kpi"><span class="mono">412</span><span>confirmed guests</span></div>
+        <div class="ci-kpi"><span class="mono">78</span><span>regulars (5+ visit days)</span></div>
+        <div class="ci-kpi"><span class="mono">31%</span><span>repeat rate</span></div>
+      </div>
+      <div class="ci-row">
+        <div class="ci-row-label">Average visits</div>
+        <div class="ci-bars">
+          <div class="ci-bar"><div class="bar reg" style="width:82%;"></div>8.4</div>
+          <div class="ci-bar"><div class="bar occ" style="width:16%;"></div>1.6</div>
+        </div>
+      </div>
+      <div class="ci-row">
+        <div class="ci-row-label">Average check</div>
+        <div class="ci-bars">
+          <div class="ci-bar"><div class="bar reg" style="width:70%;"></div>$42</div>
+          <div class="ci-bar"><div class="bar occ" style="width:52%;"></div>$31</div>
+        </div>
+      </div>
+      <div class="ci-row">
+        <div class="ci-row-label">Share of tracked revenue</div>
+        <div class="ci-bars">
+          <div class="ci-bar"><div class="bar reg" style="width:58%;"></div>34%</div>
+          <div class="ci-bar"><div class="bar occ" style="width:38%;"></div>22%</div>
+        </div>
+      </div>
+      <div class="ci-legend">
+        <span><span class="sw" style="background:var(--teal);"></span>Regulars</span>
+        <span><span class="sw" style="background:var(--mango);"></span>Occasional</span>
+      </div>
+      <div class="radius-foot">A small group of regulars usually carries an outsized share of revenue. Alfredo shows you exactly who and how, from POS data alone.</div>
+    </div>
+  </div>
+</section>
+
 <section id="intel">
   <div class="wrap">
     <span class="kicker">Competitive intel</span>
@@ -202,6 +294,43 @@
         </svg>
         <div class="radius-foot">Built from public busy times data across your whole market, then compared against your own volume. The gap between the two is where your money is hiding.</div>
       </div>
+    </div>
+
+    <div class="vizcard" style="margin-top:22px;">
+      <div class="radius-title">
+        <h3>Menu Scanner: their photo, matched to your numbers</h3>
+        <span class="sample-tag">sample data</span>
+      </div>
+      <p style="font-size:.85rem;color:var(--ink-60);">Upload a photo of a competitor menu. Alfredo reads it, matches items against your own, and shows its confidence on every pairing. You confirm or dismiss each one before anything else happens.</p>
+      <table class="match-table">
+        <thead>
+          <tr><th>Their item</th><th>Your item</th><th>Match</th><th>Gap</th><th></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Smash Burger · <span class="mono">$13.50</span></td>
+            <td>House Burger · <span class="mono">$11.00</span></td>
+            <td><span class="conf">92%</span></td>
+            <td>You are $2.50 under</td>
+            <td><button class="mini-btn" type="button">Test this price</button></td>
+          </tr>
+          <tr>
+            <td>Loaded Tots · <span class="mono">$9.00</span></td>
+            <td>Tater Tots · <span class="mono">$8.00</span></td>
+            <td><span class="conf">87%</span></td>
+            <td>You are $1.00 under</td>
+            <td><span style="font-size:.76rem;color:var(--teal);font-weight:600;">✓ confirmed</span></td>
+          </tr>
+          <tr>
+            <td>Chicken Sando · <span class="mono">$12.00</span></td>
+            <td>Crispy Chicken · <span class="mono">$12.50</span></td>
+            <td><span class="conf low">64%</span></td>
+            <td>Needs your review</td>
+            <td><span class="review-icons">👍 👎</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="radius-foot">"Test this price" only appears on matches you have confirmed, and only when the competitor price came from a published menu, never an estimate.</div>
     </div>
 
     <p class="cap-line">Also inside the Competitive tab:</p>
