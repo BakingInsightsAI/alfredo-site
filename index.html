@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>alfredo · weekly moves from your own POS data</title>
+<meta name="description" content="Alfredo reads your restaurant's POS data and hands you a short weekly list of moves worth testing: pricing, pairings, and competitive intel. Then it measures what actually happened. Every number is real, or it is not shown.">
+<link rel="icon" type="image/png" href="favicon.png">
+<meta property="og:title" content="alfredo · weekly moves from your own POS data">
+<meta property="og:description" content="Weekly, tested, measured recommendations for independent restaurants and bars. Every number is real, or it is not shown.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B2D28;
+    --teal:#0E7C66;
+    --mango:#FF8A3D;
+    --sun:#FFD166;
+    --cream:#FBF8F2;
+    --ink-60:rgba(27,45,40,.62);
+    --ink-12:rgba(27,45,40,.12);
+    --cream-70:rgba(251,248,242,.72);
+    --max:1120px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;} *,*::before,*::after{animation:none!important;transition:none!important;}}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.wordmark{font-family:'Nunito',sans-serif;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  a{color:inherit;}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--mango);outline-offset:3px;border-radius:4px;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px;}
+
+  /* ---------- nav ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:var(--cream);
+    border-bottom:1px solid var(--ink-12);
+  }
+  .nav-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 28px;max-width:var(--max);margin:0 auto;
+  }
+  .wordmark{
+    font-weight:900;font-size:1.5rem;letter-spacing:-.02em;
+    text-decoration:none;color:var(--ink);
+  }
+  .wordmark .dot{color:var(--mango);}
+  .nav-links{display:flex;gap:32px;align-items:center;list-style:none;}
+  .nav-links a{
+    text-decoration:none;font-size:.92rem;font-weight:500;color:var(--ink-60);
+    transition:color .15s;
+  }
+  .nav-links a:hover{color:var(--ink);}
+  .btn{
+    display:inline-block;
+    background:var(--teal);color:var(--cream);
+    font-family:'Nunito',sans-serif;font-weight:800;font-size:.95rem;
+    padding:12px 26px;border-radius:100px;text-decoration:none;border:none;cursor:pointer;
+    transition:transform .15s,background .15s;
+  }
+  .btn:hover{background:#0B6B57;transform:translateY(-1px);}
+  .btn.mango{background:var(--mango);color:var(--ink);}
+  .btn.mango:hover{background:#F27E30;}
+  .btn.ghost{background:transparent;color:var(--teal);box-shadow:inset 0 0 0 2px var(--teal);}
+  .btn.ghost:hover{background:rgba(14,124,102,.07);}
+  @media(max-width:800px){.nav-links li:not(:last-child){display:none;}}
+
+  /* ---------- hero ---------- */
+  header.hero{position:relative;overflow:hidden;}
+  .hero-inner{
+    display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;
+    padding:88px 28px 96px;max-width:var(--max);margin:0 auto;
+  }
+  @media(max-width:900px){.hero-inner{grid-template-columns:1fr;padding:56px 28px 64px;}}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--teal);margin-bottom:20px;
+  }
+  .eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--mango);}
+  .hero h1{
+    font-size:clamp(2.3rem,4.6vw,3.6rem);
+    font-weight:900;line-height:1.08;letter-spacing:-.025em;
+    margin-bottom:22px;
+  }
+  .hero h1 em{font-style:normal;color:var(--teal);}
+  .hero .lede{
+    font-size:1.13rem;color:var(--ink-60);max-width:34em;margin-bottom:34px;
+  }
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+  .hero-note{font-size:.83rem;color:var(--ink-60);margin-top:18px;}
+
+  /* dot scatter, rising */
+  .scatter{position:absolute;inset:0;pointer-events:none;z-index:-1;}
+
+  /* ---------- board cards (signature) ---------- */
+  .board{display:flex;flex-direction:column;gap:18px;}
+  .card{
+    background:#fff;border:1px solid var(--ink-12);border-radius:16px;
+    padding:22px 24px;box-shadow:0 6px 24px rgba(27,45,40,.06);
+  }
+  .card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:10px;}
+  .chip{
+    font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    padding:4px 12px;border-radius:100px;white-space:nowrap;
+  }
+  .chip.teal{background:rgba(14,124,102,.12);color:var(--teal);}
+  .chip.sun{background:var(--sun);color:var(--ink);}
+  .chip.mango{background:rgba(255,138,61,.16);color:#B25419;}
+  .chip.hollow{border:1px dashed var(--ink-12);color:var(--ink-60);}
+  .card h3{font-size:1.06rem;font-weight:800;letter-spacing:-.01em;margin-bottom:6px;}
+  .card p{font-size:.9rem;color:var(--ink-60);}
+  .figure{
+    font-family:'JetBrains Mono',monospace;font-size:1.5rem;font-weight:600;
+    color:var(--teal);margin-top:12px;
+  }
+  .figure small{font-size:.72rem;color:var(--ink-60);font-weight:400;display:block;letter-spacing:.02em;}
+  .figure.pending{color:var(--ink-60);font-size:1.05rem;}
+  .figure.pending .dots{color:var(--mango);letter-spacing:.2em;}
+  .sample-tag{font-size:.68rem;color:var(--ink-60);font-style:italic;}
+  .blind{
+    display:inline-block;background:var(--ink-12);color:var(--ink-60);
+    font-size:.68em;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    padding:2px 10px;border-radius:6px;vertical-align:middle;
+  }
+  .chiprow{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+  .statchip{
+    font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--teal);
+    background:rgba(14,124,102,.08);padding:4px 10px;border-radius:6px;white-space:nowrap;
+  }
+  .statchip.amber{color:#9A6A00;background:rgba(255,209,102,.28);}
+  .softrow{font-size:.72rem;color:var(--ink-60);margin-top:10px;}
+  .board-caption{
+    font-size:.82rem;color:var(--ink-60);text-align:center;max-width:30em;margin:2px auto 0;
+  }
+  .board-caption strong{color:var(--ink);font-weight:600;}
+
+  /* ---------- section scaffolding ---------- */
+  section{padding:88px 0;}
+  @media(max-width:800px){section{padding:60px 0;}}
+  .kicker{
+    font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--teal);margin-bottom:14px;display:block;
+  }
+  .section-title{
+    font-size:clamp(1.7rem,3vw,2.4rem);font-weight:900;letter-spacing:-.02em;
+    line-height:1.15;margin-bottom:16px;max-width:20em;
+  }
+  .section-lede{color:var(--ink-60);max-width:38em;font-size:1.05rem;}
+
+  /* ---------- loop ---------- */
+  .loop{
+    display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:56px;position:relative;
+  }
+  @media(max-width:900px){.loop{grid-template-columns:1fr;gap:26px;}}
+  .step{padding:0 22px;position:relative;}
+  .step:not(:last-child)::after{
+    content:"→";position:absolute;right:-8px;top:2px;color:var(--mango);
+    font-size:1.2rem;font-weight:700;
+  }
+  @media(max-width:900px){.step:not(:last-child)::after{content:"↓";right:auto;left:4px;top:auto;bottom:-24px;}}
+  .step-num{
+    font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--mango);
+    font-weight:600;display:block;margin-bottom:10px;
+  }
+  .step h3{font-size:1.02rem;font-weight:800;margin-bottom:8px;}
+  .step p{font-size:.88rem;color:var(--ink-60);}
+  .loop-return{
+    margin-top:44px;text-align:center;font-size:.85rem;color:var(--ink-60);
+  }
+  .loop-return .mono{color:var(--teal);}
+
+  /* ---------- pillars ---------- */
+  .pillars{background:#fff;border-top:1px solid var(--ink-12);border-bottom:1px solid var(--ink-12);}
+  .pillar-grid{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:52px;
+  }
+  @media(max-width:800px){.pillar-grid{grid-template-columns:1fr;}}
+  .pillar{
+    border:1px solid var(--ink-12);border-radius:16px;padding:30px 30px 26px;
+    background:var(--cream);
+  }
+  .pillar-dot{width:12px;height:12px;border-radius:50%;margin-bottom:18px;}
+  .pillar h3{font-size:1.15rem;font-weight:800;margin-bottom:10px;letter-spacing:-.01em;}
+  .pillar p{font-size:.92rem;color:var(--ink-60);}
+
+  /* ---------- honesty (ink band) ---------- */
+  .honesty{background:var(--ink);color:var(--cream);}
+  .honesty .kicker{color:var(--sun);}
+  .honesty .section-lede{color:var(--cream-70);}
+  .promise-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:36px 48px;margin-top:56px;}
+  @media(max-width:800px){.promise-grid{grid-template-columns:1fr;}}
+  .promise{border-top:2px solid var(--teal);padding-top:22px;}
+  .promise h3{font-size:1.05rem;font-weight:800;margin-bottom:10px;color:var(--sun);}
+  .promise p{font-size:.9rem;color:var(--cream-70);}
+
+  /* ---------- competitive intel ---------- */
+  .intel-inner{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+  @media(max-width:900px){.intel-inner{grid-template-columns:1fr;}}
+  .radius-card{
+    background:#fff;border:1px solid var(--ink-12);border-radius:16px;
+    padding:26px;box-shadow:0 6px 24px rgba(27,45,40,.06);
+  }
+  .radius-title{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px;}
+  .radius-title h3{font-size:1rem;font-weight:800;}
+  .radius-row{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:12px 0;border-top:1px solid var(--ink-12);font-size:.88rem;
+  }
+  .radius-row .name{font-weight:600;}
+  .radius-row .stat{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--teal);}
+  .radius-row .stat.up{color:var(--mango);}
+  .radius-foot{font-size:.72rem;color:var(--ink-60);margin-top:14px;font-style:italic;}
+  .statstrip{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:44px 0 36px;}
+  @media(max-width:800px){.statstrip{grid-template-columns:repeat(2,1fr);}}
+  .ministat{border-left:3px solid var(--mango);padding-left:16px;}
+  .ministat-num{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.6rem;letter-spacing:-.02em;color:var(--teal);}
+  .ministat-label{font-size:.8rem;color:var(--ink-60);margin-top:2px;}
+  .viz-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:8px;}
+  @media(max-width:900px){.viz-grid{grid-template-columns:1fr;}}
+  .vizcard{
+    background:#fff;border:1px solid var(--ink-12);border-radius:16px;
+    padding:24px;box-shadow:0 6px 24px rgba(27,45,40,.06);
+  }
+  .vizcard svg{width:100%;height:auto;display:block;margin-top:6px;}
+  .cap-line{font-size:.85rem;font-weight:600;color:var(--ink-60);margin-top:36px;margin-bottom:12px;}
+  .cap-list{display:flex;flex-wrap:wrap;gap:10px;}
+  .cap{
+    font-size:.82rem;font-weight:500;color:var(--ink);
+    background:#fff;border:1px solid var(--ink-12);border-radius:100px;
+    padding:7px 16px;
+  }
+
+  /* ---------- status ---------- */
+  .status{background:#fff;border-top:1px solid var(--ink-12);}
+  .status-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:52px;}
+  @media(max-width:800px){.status-grid{grid-template-columns:1fr;}}
+  .stat-card{
+    border:1px solid var(--ink-12);border-radius:16px;padding:28px;background:var(--cream);
+  }
+  .stat-card .big{
+    font-family:'Nunito',sans-serif;font-weight:900;font-size:1.7rem;letter-spacing:-.02em;
+    margin-bottom:8px;
+  }
+  .stat-card .big .mango-txt{color:var(--mango);}
+  .stat-card p{font-size:.88rem;color:var(--ink-60);}
+
+  /* ---------- CTA ---------- */
+  .cta-band{padding:96px 0;}
+  .cta-box{
+    background:var(--teal);color:var(--cream);border-radius:24px;
+    padding:64px 56px;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;
+    position:relative;overflow:hidden;
+  }
+  @media(max-width:800px){.cta-box{grid-template-columns:1fr;padding:44px 32px;}}
+  .cta-box h2{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:900;letter-spacing:-.02em;line-height:1.15;margin-bottom:14px;}
+  .cta-box p{color:rgba(251,248,242,.78);font-size:1rem;max-width:32em;}
+  .cta-actions{display:flex;flex-direction:column;gap:14px;align-items:flex-start;}
+  @media(max-width:800px){.cta-actions{align-items:stretch;}}
+  .cta-actions .btn{text-align:center;}
+  .cta-fine{font-size:.78rem;color:rgba(251,248,242,.6);}
+
+  /* ---------- footer ---------- */
+  footer{padding:44px 0 56px;border-top:1px solid var(--ink-12);}
+  .foot-inner{
+    display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;
+    max-width:var(--max);margin:0 auto;padding:0 28px;
+  }
+  footer p{font-size:.82rem;color:var(--ink-60);}
+</style>
+</head>
+<body>
+
+<nav aria-label="Main">
+  <div class="nav-inner">
+    <a class="wordmark" href="#top">alfredo<span class="dot">·</span></a>
+    <ul class="nav-links">
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#menulab">Menu lab</a></li>
+      <li><a href="#honesty">Our numbers rule</a></li>
+      <li><a href="#intel">Competitive intel</a></li>
+      <li><a class="btn" href="#pilot">Request a pilot</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <svg class="scatter" width="100%" height="100%" viewBox="0 0 1200 640" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <g opacity="0.5">
+      <circle cx="60"  cy="600" r="5" fill="#FF8A3D" opacity=".55"/>
+      <circle cx="130" cy="560" r="4" fill="#0E7C66" opacity=".35"/>
+      <circle cx="95"  cy="500" r="3" fill="#FFD166" opacity=".6"/>
+      <circle cx="180" cy="470" r="5" fill="#FF8A3D" opacity=".4"/>
+      <circle cx="240" cy="420" r="3" fill="#0E7C66" opacity=".3"/>
+      <circle cx="150" cy="380" r="2.5" fill="#FF8A3D" opacity=".45"/>
+      <circle cx="290" cy="340" r="4" fill="#FFD166" opacity=".5"/>
+      <circle cx="230" cy="280" r="2.5" fill="#0E7C66" opacity=".3"/>
+      <circle cx="330" cy="240" r="3" fill="#FF8A3D" opacity=".38"/>
+      <circle cx="280" cy="180" r="2" fill="#FFD166" opacity=".45"/>
+      <circle cx="370" cy="140" r="2.5" fill="#0E7C66" opacity=".28"/>
+      <circle cx="340" cy="80"  r="2" fill="#FF8A3D" opacity=".3"/>
+    </g>
+  </svg>
+
+  <div class="hero-inner">
+    <div>
+      <span class="eyebrow">For independent restaurants and bars · patent pending</span>
+      <h1>Your POS already knows the answers. <em>Alfredo asks the questions.</em></h1>
+      <p class="lede">Every week, Alfredo reads your own transaction data and hands you a short list of moves worth making: a price to test, a pairing to push, a competitor shift to watch. Then it measures what actually happened. Every number is real, or it is not shown.</p>
+      <div class="hero-ctas">
+        <a class="btn mango" href="#pilot">Request a pilot</a>
+        <a class="btn ghost" href="#how">See how it works</a>
+      </div>
+      <p class="hero-note">Built for Toast. Currently implemented in a 14 location restaurant chain and a brewpub.</p>
+    </div>
+
+    <div>
+      <div class="board" aria-label="Live recommendation board, item names hidden">
+        <div class="card">
+          <div class="card-top">
+            <span class="chip teal">1 · Pricing</span>
+          </div>
+          <h3>Raise Fountain Soda from $3.00 to $3.50</h3>
+          <p>Currently moves 161 units weekly at $3.00. The engine estimates the bump costs roughly 11.7% of volume and still comes out ahead on net revenue.</p>
+          <div class="chiprow">
+            <span class="statchip">Volume 161/wk</span>
+            <span class="statchip">If holds +$14.76/wk</span>
+            <span class="statchip">Cushion 16.7%</span>
+          </div>
+          <p class="softrow">Low risk · reversible in under 15 minutes · 4 week test</p>
+        </div>
+
+        <div class="card">
+          <div class="card-top">
+            <span class="chip sun">2 · Positioning</span>
+          </div>
+          <h3>Cross promote Tater Tots with House Wheat Beer</h3>
+          <p>Worth testing: the pairing runs at 2.6x lift across 51 shared baskets. Unverified until tested, but it suggests server nudges could turn beverage only checks into food attached orders.</p>
+          <div class="chiprow">
+            <span class="statchip">Lift 2.6x</span>
+            <span class="statchip">Shared baskets 51</span>
+            <span class="statchip amber">⚠ see assumptions</span>
+          </div>
+          <p class="softrow">The engine's own label: very low confidence, run it as a test first. That label is the product working.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-top">
+            <span class="chip mango">3 · Competitive signal</span>
+          </div>
+          <h3>A taproom near you is winning repeat visits on staff friendliness and new releases</h3>
+          <p>23 of their last 37 reviews praise both, and the pattern is building. Labeled as an observation of what their customers are saying, not a recommendation.</p>
+          <div class="chiprow">
+            <span class="statchip">Signal: Building</span>
+            <span class="statchip">23 of 37 reviews</span>
+          </div>
+          <p class="softrow">Alfredo watches what your competitors' customers keep saying and puts the pattern on your weekly board, before it costs you regulars.</p>
+        </div>
+      </div>
+      <p class="board-caption"><strong>Recreated from a live operator board.</strong> Item and venue names changed to protect our tenants. The numbers are what the engine actually said.</p>
+    </div>
+  </div>
+</header>
+
+<section id="how">
+  <div class="wrap">
+    <span class="kicker">The closed loop</span>
+    <h2 class="section-title">Not a dashboard. A weekly to do list that grades itself.</h2>
+    <p class="section-lede">Dashboards show you charts and leave the thinking to you. Alfredo runs a loop: it ranks the moves, you pick one, it measures the outcome, and the result trains the next week's board.</p>
+
+    <div class="loop">
+      <div class="step">
+        <span class="step-num">01</span>
+        <h3>Read</h3>
+        <p>Your POS transactions flow in. No new hardware, no staff retraining, no loyalty program required.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">02</span>
+        <h3>Rank</h3>
+        <p>The engine scores every candidate move: pricing, cross sell, operations, competitive. You see a short ranked list, not 400 charts.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">03</span>
+        <h3>Test</h3>
+        <p>One tap turns a recommendation into a real A/B test on your own menu, with a control item and a time window.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">04</span>
+        <h3>Measure</h3>
+        <p>When the window closes, you get a plain verdict: it worked, it did not, or the data was too thin to call.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">05</span>
+        <h3>Learn</h3>
+        <p>Every verdict feeds back into the ranking. The board you see in month six knows what your floor already taught it.</p>
+      </div>
+    </div>
+    <p class="loop-return">step 05 feeds step 02 <span class="mono">· the loop is the product</span></p>
+  </div>
+</section>
+
+<section class="pillars">
+  <div class="wrap">
+    <span class="kicker">What lands on your board</span>
+    <h2 class="section-title">Four kinds of moves, one ranked list.</h2>
+    <div class="pillar-grid">
+      <div class="pillar">
+        <div class="pillar-dot" style="background:var(--teal)"></div>
+        <h3>Pricing</h3>
+        <p>Which items can carry a price move, which cannot, and a built in test to prove it before you commit the whole menu.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-dot" style="background:var(--mango)"></div>
+        <h3>Promotions</h3>
+        <p>Bundles and pairings pulled from your real baskets, with the co order evidence attached. Not your best seller. The pairing you would not have guessed.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-dot" style="background:var(--sun)"></div>
+        <h3>Positioning</h3>
+        <p>Where each item sits on your menu and in your market: highlight the hidden gems, dim the underperformers, watch the gaps your competitors leave open.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-dot" style="background:var(--ink)"></div>
+        <h3>Operations</h3>
+        <p>Table time, dayparts, happy hour economics, item availability. Where the floor and the data disagree, you find out early.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="menulab">
+  <div class="wrap">
+    <span class="kicker">The menu lab</span>
+    <h2 class="section-title">Your menu is a draft. Treat it like one.</h2>
+    <p class="section-lede">Menu Advisor is a working copy of your menu you can experiment on. Drag items, highlight, dim, badge, reprice, build bundles. Every suggestion arrives with its evidence, and any edit can become a measured test in four clicks.</p>
+
+    <div class="pillar-grid" style="margin-top:52px;">
+      <div class="pillar">
+        <div class="pillar-dot" style="background:var(--teal)"></div>
+        <h3>Suggestions with receipts</h3>
+        <p>Up to ten at a time, each carrying its evidence: co order lift, competitor prices, margin math, verbatim lines from your own reviews.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-dot" style="background:var(--mango)"></div>
+        <h3>The test wizard</h3>
+        <p>Pick the item, pick the change, pick a control, pick a duration. The AI proposes control items and shows its match score. You decide.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-dot" style="background:var(--sun)"></div>
+        <h3>An honest scoreboard</h3>
+        <p>Your edits tally into estimated impact, and the scoreboard keeps estimates and measured results clearly apart. They never blend.</p>
+      </div>
+      <div class="pillar" style="border-style:dashed;">
+        <div class="pillar-dot" style="background:var(--ink)"></div>
+        <h3><span class="chip sun" style="margin-right:8px;">On the roadmap</span>Live on your digital menu</h3>
+        <p>Direct integration with digital menus, so a price or layout test goes live on the menu your guests actually see and comes back with a verdict. Not built yet. When it ships, it ships measured.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="honesty" id="honesty">
+  <div class="wrap">
+    <span class="kicker">The numbers rule</span>
+    <h2 class="section-title">Every number is real, or it is not shown.</h2>
+    <p class="section-lede">Analytics tools earn attention with big projected dollar figures. We think that habit is why operators stopped trusting analytics tools. Alfredo is built fail closed:</p>
+    <div class="promise-grid">
+      <div class="promise">
+        <h3>No invented figures</h3>
+        <p>Every dollar amount traces back to your own transactions. If we cannot trace it, you do not see it.</p>
+      </div>
+      <div class="promise">
+        <h3>Pending means pending</h3>
+        <p>Thin data shows as "needs more data," never as a confident guess dressed up with decimals.</p>
+      </div>
+      <div class="promise">
+        <h3>Verdicts, not victory laps</h3>
+        <p>A finished test can say exactly three things: worked, no effect, or backfired. When it backfires, the board says backfired.</p>
+      </div>
+      <div class="promise">
+        <h3>No peeking</h3>
+        <p>While a test is running, the dashboard shows no interim results. Checking mid test inflates false positives, so the product does not let anyone peek. Including us.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="intel">
+  <div class="wrap">
+    <span class="kicker">Competitive intel</span>
+    <h2 class="section-title">Know your block like you own it.</h2>
+    <p class="section-lede">Alfredo tracks every venue around you: their ratings, their hours, their prices, and what their customers keep saying in reviews. Then it puts the pattern on your weekly board. Walking past a competitor? Photograph their menu, upload it, and see it matched item by item against your own sales.</p>
+
+    <div class="statstrip" aria-label="Sample competitive metrics">
+      <div class="ministat"><div class="ministat-num">36</div><div class="ministat-label">restaurants tracked in your area</div></div>
+      <div class="ministat"><div class="ministat-num">8 of 36</div><div class="ministat-label">open past midnight: your late night edge</div></div>
+      <div class="ministat"><div class="ministat-num">+1.1</div><div class="ministat-label">your service score vs market average</div></div>
+      <div class="ministat"><div class="ministat-num">1 click</div><div class="ministat-label">from any competitor row to a full menu scan</div></div>
+    </div>
+
+    <div class="viz-grid">
+      <div class="vizcard">
+        <div class="radius-title">
+          <h3>Sentiment radar: you vs your market</h3>
+          <span class="sample-tag">sample data</span>
+        </div>
+        <svg viewBox="0 0 300 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Radar chart comparing your review scores to competitor average">
+          <g stroke="#E4E0D8" fill="none" stroke-width="1">
+            <polygon points="150,40 245.1,109.1 208.8,220.9 91.2,220.9 54.9,109.1"/>
+            <polygon points="150,65 221.3,116.8 194.1,200.7 105.9,200.7 78.7,116.8"/>
+            <polygon points="150,90 197.6,124.6 179.4,180.5 120.6,180.5 102.5,124.6"/>
+            <polygon points="150,115 173.8,132.3 164.7,160.2 135.3,160.2 126.2,132.3"/>
+            <line x1="150" y1="140" x2="150" y2="40"/>
+            <line x1="150" y1="140" x2="245.1" y2="109.1"/>
+            <line x1="150" y1="140" x2="208.8" y2="220.9"/>
+            <line x1="150" y1="140" x2="91.2" y2="220.9"/>
+            <line x1="150" y1="140" x2="54.9" y2="109.1" stroke-dasharray="3 3"/>
+          </g>
+          <polygon points="150,56 222.3,116.5 197,204.7 103,204.7" fill="#FF8A3D" fill-opacity="0.13" stroke="#FF8A3D" stroke-width="2"/>
+          <polygon points="150,44 243.2,109.7 199.4,208 97.1,212.8" fill="#0E7C66" fill-opacity="0.18" stroke="#0E7C66" stroke-width="2.5"/>
+          <text x="150" y="28" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#1B2D28">Food 4.8</text>
+          <text x="252" y="105" text-anchor="start" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#1B2D28">Service 4.9</text>
+          <text x="214" y="238" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#1B2D28">Value 4.2</text>
+          <text x="88" y="238" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#1B2D28">Speed 4.5</text>
+          <text x="48" y="100" text-anchor="end" font-family="Inter,sans-serif" font-size="11" font-style="italic" fill="rgba(27,45,40,.45)">Ambiance</text>
+          <text x="48" y="113" text-anchor="end" font-family="Inter,sans-serif" font-size="9" font-style="italic" fill="rgba(27,45,40,.45)">n=3 · not enough mentions</text>
+          <g font-family="Inter,sans-serif" font-size="10">
+            <rect x="88" y="248" width="10" height="10" rx="2" fill="#0E7C66"/>
+            <text x="103" y="257" fill="#1B2D28">You</text>
+            <rect x="138" y="248" width="10" height="10" rx="2" fill="#FF8A3D"/>
+            <text x="153" y="257" fill="#1B2D28">Market avg</text>
+          </g>
+        </svg>
+        <div class="radius-foot">Scores are read out of your market's actual reviews. Dimensions without enough mentions stay faded until the data earns them. Even here, no number without evidence.</div>
+      </div>
+
+      <div class="vizcard">
+        <div class="radius-title">
+          <h3>When your market is busy, hour by hour</h3>
+          <span class="sample-tag">sample data</span>
+        </div>
+        <svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Heatmap of market busy times by day and hour">
+          <g font-family="Inter,sans-serif" font-size="10" fill="rgba(27,45,40,.6)">
+            <text x="34" y="42" text-anchor="end">Mon</text>
+            <text x="34" y="66" text-anchor="end">Tue</text>
+            <text x="34" y="90" text-anchor="end">Wed</text>
+            <text x="34" y="114" text-anchor="end">Thu</text>
+            <text x="34" y="138" text-anchor="end">Fri</text>
+            <text x="34" y="162" text-anchor="end">Sat</text>
+            <text x="34" y="186" text-anchor="end">Sun</text>
+            <text x="55" y="20" text-anchor="middle">3p</text>
+            <text x="87" y="20" text-anchor="middle">4p</text>
+            <text x="119" y="20" text-anchor="middle">5p</text>
+            <text x="151" y="20" text-anchor="middle">6p</text>
+            <text x="183" y="20" text-anchor="middle">7p</text>
+            <text x="215" y="20" text-anchor="middle">8p</text>
+            <text x="247" y="20" text-anchor="middle">9p</text>
+            <text x="279" y="20" text-anchor="middle">10p</text>
+          </g>
+          <g>
+            <!-- Mon -->
+            <rect x="42" y="30" width="26" height="18" rx="3" fill="#EFF4F2"/><rect x="74" y="30" width="26" height="18" rx="3" fill="#EFF4F2"/><rect x="106" y="30" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="138" y="30" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="170" y="30" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="202" y="30" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="234" y="30" width="26" height="18" rx="3" fill="#EFF4F2"/><rect x="266" y="30" width="26" height="18" rx="3" fill="#EFF4F2"/>
+            <!-- Tue -->
+            <rect x="42" y="54" width="26" height="18" rx="3" fill="#EFF4F2"/><rect x="74" y="54" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="106" y="54" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="138" y="54" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="170" y="54" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="202" y="54" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="234" y="54" width="26" height="18" rx="3" fill="#EFF4F2"/><rect x="266" y="54" width="26" height="18" rx="3" fill="#EFF4F2"/>
+            <!-- Wed -->
+            <rect x="42" y="78" width="26" height="18" rx="3" fill="#EFF4F2"/><rect x="74" y="78" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="106" y="78" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="138" y="78" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="170" y="78" width="26" height="18" rx="3" fill="#FFC48A"/><rect x="202" y="78" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="234" y="78" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="266" y="78" width="26" height="18" rx="3" fill="#EFF4F2"/>
+            <!-- Thu -->
+            <rect x="42" y="102" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="74" y="102" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="106" y="102" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="138" y="102" width="26" height="18" rx="3" fill="#FFC48A"/><rect x="170" y="102" width="26" height="18" rx="3" fill="#FFC48A"/><rect x="202" y="102" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="234" y="102" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="266" y="102" width="26" height="18" rx="3" fill="#DCEAE5"/>
+            <!-- Fri -->
+            <rect x="42" y="126" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="74" y="126" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="106" y="126" width="26" height="18" rx="3" fill="#FFC48A"/><rect x="138" y="126" width="26" height="18" rx="3" fill="#FF8A3D"/><rect x="170" y="126" width="26" height="18" rx="3" fill="#F0603E"/><rect x="202" y="126" width="26" height="18" rx="3" fill="#F0603E"/><rect x="234" y="126" width="26" height="18" rx="3" fill="#FF8A3D"/><rect x="266" y="126" width="26" height="18" rx="3" fill="#FFC48A"/>
+            <!-- Sat -->
+            <rect x="42" y="150" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="74" y="150" width="26" height="18" rx="3" fill="#FFC48A"/><rect x="106" y="150" width="26" height="18" rx="3" fill="#FFC48A"/><rect x="138" y="150" width="26" height="18" rx="3" fill="#FF8A3D"/><rect x="170" y="150" width="26" height="18" rx="3" fill="#F0603E"/><rect x="202" y="150" width="26" height="18" rx="3" fill="#F0603E"/><rect x="234" y="150" width="26" height="18" rx="3" fill="#FF8A3D"/><rect x="266" y="150" width="26" height="18" rx="3" fill="#FF8A3D"/>
+            <!-- Sun -->
+            <rect x="42" y="174" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="74" y="174" width="26" height="18" rx="3" fill="#FFC48A"/><rect x="106" y="174" width="26" height="18" rx="3" fill="#FFC48A"/><rect x="138" y="174" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="170" y="174" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="202" y="174" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="234" y="174" width="26" height="18" rx="3" fill="#EFF4F2"/><rect x="266" y="174" width="26" height="18" rx="3" fill="#EFF4F2"/>
+          </g>
+          <g font-family="Inter,sans-serif" font-size="10" fill="rgba(27,45,40,.6)">
+            <text x="42" y="212">Quiet</text>
+            <rect x="76" y="204" width="14" height="9" rx="2" fill="#EFF4F2"/><rect x="92" y="204" width="14" height="9" rx="2" fill="#DCEAE5"/><rect x="108" y="204" width="14" height="9" rx="2" fill="#FFE9BD"/><rect x="124" y="204" width="14" height="9" rx="2" fill="#FFC48A"/><rect x="140" y="204" width="14" height="9" rx="2" fill="#FF8A3D"/><rect x="156" y="204" width="14" height="9" rx="2" fill="#F0603E"/>
+            <text x="178" y="212">Busy</text>
+          </g>
+        </svg>
+        <div class="radius-foot">Built from public busy times data across your whole market, then compared against your own volume. The gap between the two is where your money is hiding.</div>
+      </div>
+    </div>
+
+    <p class="cap-line">Also inside the Competitive tab:</p>
+    <div class="cap-list">
+      <span class="cap">AI written SWOT from your market's reviews</span>
+      <span class="cap">Interactive competitor map</span>
+      <span class="cap">Census demographics per trade area</span>
+      <span class="cap">Nightlife spillover score</span>
+      <span class="cap">Extended hours revenue scenarios</span>
+      <span class="cap">Price tier positioning</span>
+      <span class="cap">One click competitor menu scan</span>
+    </div>
+
+    <p style="margin-top:34px;"><a class="btn" href="#pilot">Get my neighborhood snapshot</a></p>
+  </div>
+</section>
+
+<section class="status">
+  <div class="wrap">
+    <span class="kicker">How we work</span>
+    <h2 class="section-title">A platform shaped to your restaurant, not the average restaurant.</h2>
+    <p class="section-lede">Every venue runs differently, so Alfredo starts by learning yours. This is not a consultant who visits once, drops a binder, and disappears. We work alongside you, and the platform keeps measuring after the conversation ends.</p>
+    <div class="status-grid">
+      <div class="stat-card">
+        <div class="big">We start by <span class="mango-txt">listening</span></div>
+        <p>Onboarding begins with an intake questionnaire: your history, your goals, what you have already tried, what makes your floor different. Recommendations are tuned to your business, not a category average.</p>
+      </div>
+      <div class="stat-card">
+        <div class="big">Your reputation <span class="mango-txt">is data</span></div>
+        <p>What the public says about you and the venues around you feeds the engine. If your regulars love the service and your neighbor's fries are suddenly famous, your weekly board knows.</p>
+      </div>
+      <div class="stat-card">
+        <div class="big">Shaped <span class="mango-txt">to fit</span></div>
+        <p>The dashboard configures per venue: a brewery gets a tap room, a bar gets a bar program, and we are open to customization where your needs do not match the default. Early partners shape the roadmap.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="status" style="background:var(--cream);border-top:1px solid var(--ink-12);">
+  <div class="wrap">
+    <span class="kicker">Where we are</span>
+    <h2 class="section-title">Early, and honest about it.</h2>
+    <p class="section-lede">We would rather tell you exactly where the product stands than imply a scale we have not reached. Here is the current state, stated the way our own board would state it.</p>
+    <div class="status-grid">
+      <div class="stat-card">
+        <div class="big">Live in <span class="mango-txt">production</span></div>
+        <p>Currently implemented in a 14 location restaurant chain and a brewpub: real transactions, live weekly boards, real tests with real verdicts.</p>
+      </div>
+      <div class="stat-card">
+        <div class="big">Patent <span class="mango-txt">pending</span></div>
+        <p>The closed loop recommendation and measurement system is patent pending with the USPTO.</p>
+      </div>
+      <div class="stat-card">
+        <div class="big">Pilot <span class="mango-txt">seats open</span></div>
+        <p>We are onboarding a small number of bar forward independents as design partners. Early operators shape the roadmap.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="pilot">
+  <div class="wrap">
+    <div class="cta-box">
+      <div>
+        <h2>Run Alfredo on your data. Judge it by its verdicts.</h2>
+        <p>Pilot partners get the full platform on their own POS data, direct access to the founder, and pricing that reflects being early. If the boards do not earn their keep, the data will say so. That is the whole point.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn mango" href="mailto:hello@example.com">Request a pilot</a>
+        <a class="btn ghost" style="box-shadow:inset 0 0 0 2px var(--cream);color:var(--cream);" href="mailto:hello@example.com">Ask for a neighborhood snapshot</a>
+        <span class="cta-fine">Toast operators, 1 to 2 locations. Raleigh and Durham first.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <a class="wordmark" href="#top" style="font-size:1.2rem;">alfredo<span class="dot">·</span></a>
+    <p>© 2026 Alfredo, a BakingInsights AI product · patent pending · every number is real, or it is not shown</p>
+  </div>
+</footer>
+
+</body>
+</html>
