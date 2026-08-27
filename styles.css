@@ -374,3 +374,14 @@
 }
 .assure h3{font-family:'Nunito',sans-serif;font-weight:800;font-size:1.05rem;margin-bottom:8px;letter-spacing:-.01em;}
 .assure p{font-size:.92rem;color:var(--ink-60);}
+
+/* ---------- guest segments ---------- */
+.seg-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:16px;}
+@media(max-width:900px){.seg-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.seg-grid{grid-template-columns:1fr;}}
+.seg{border:1px solid var(--ink-12);border-radius:12px;padding:16px;background:var(--cream);}
+.seg-name{font-family:'Nunito',sans-serif;font-weight:800;font-size:.92rem;letter-spacing:-.01em;margin-bottom:8px;}
+.seg-pencil{color:var(--ink-60);font-size:.8rem;font-weight:400;}
+.seg-stats{display:flex;flex-wrap:wrap;gap:6px 12px;margin-bottom:8px;}
+.seg-stats .mono{font-size:.7rem;color:var(--teal);}
+.seg p{font-size:.78rem;color:var(--ink-60);}
