@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>alfredo · the weekly board</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<meta name="description" content="A weekly board of recommendations from your own POS data, and an honest verdict on every one you try: worked, no effect, or backfired.">
+<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav aria-label="Main">
+  <div class="nav-inner">
+    <a class="wordmark" href="index.html">alfredo<span class="dot">·</span></a>
+    <ul class="nav-links">
+      <li><a href="product.html" class="active">Product</a></li>
+      <li><a href="honesty.html">Our numbers rule</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="pilot.html">Work with us</a></li>
+      <li><a class="btn" href="pilot.html#pilot">Request a demo</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section id="board" style="padding-top:64px;">
+  <div class="wrap">
+    <span class="kicker">How Alfredo works</span>
+    <h2 class="section-title">It hands you the recommendation, then grades it.</h2>
+    <p class="section-lede">Dashboards show you charts and leave the thinking to you. Alfredo reads your POS, hands you a short ranked list of recommendations worth trying, and when you try one, it measures what actually happened and gets smarter about your business. Suggest, try, verdict, repeat.</p>
+    <p class="section-lede" style="margin-top:16px;">No new hardware, nothing to install, no staff retraining. Alfredo connects to the Toast or Clover POS you already run.</p>
+
+    <div class="viz-grid" style="margin-top:56px;">
+      <div class="vizcard" id="measured">
+        <div class="radius-title">
+          <h3>What "measured" actually looks like</h3>
+          <span class="sample-tag">sample data</span>
+        </div>
+        <div class="card-top" style="margin-top:6px;">
+          <span class="chip teal">Marked done · Pricing</span>
+        </div>
+        <h3 style="font-size:1.02rem;font-weight:800;margin:8px 0 4px;">Raise House Lager from $6.50 to $7.00</h3>
+        <p style="font-size:.85rem;color:var(--ink-60);">Projected +$11.40/wk if it holds. Here is what the weeks actually said:</p>
+        <div class="trackrow">
+          <div class="wk good">W1</div>
+          <div class="wk good">W2</div>
+          <div class="wk bad">W3</div>
+          <div class="wk good">W4</div>
+        </div>
+        <p class="track-legend">green: on target · red: below · gray: not enough data that week</p>
+        <div class="outcome">
+          <span class="mono">Measured: +$9.80/wk attributable</span>
+          <small>Compared against a control item, with what you would have made anyway subtracted out. Measured under projection, and the board says so.</small>
+        </div>
+      </div>
+
+      <div class="vizcard">
+        <div class="radius-title">
+          <h3>Every change ends in a verdict</h3>
+          <span class="sample-tag">sample data</span>
+        </div>
+        <div class="nopeek">While a test is running, no interim results are shown. Checking results mid test inflates false positives, so Alfredo does not allow it.</div>
+        <div class="card-top">
+          <span class="chip hollow">Menu trial · completed</span>
+        </div>
+        <h3 style="font-size:1.02rem;font-weight:800;margin:8px 0 4px;">Reprice Garlic Fries from $5.50 to $6.50</h3>
+        <div class="verdict-strip">
+          <span class="vbadge worked">Worked</span>
+          <span class="vbadge noeffect">No effect</span>
+          <span class="vbadge backfired on">Backfired</span>
+        </div>
+        <p style="font-size:.85rem;color:var(--ink-60);">Units fell 22% and net revenue came out $41/wk below baseline. The dollar jump was too big for this item.</p>
+        <p class="rollback"><strong>Rolled back to $5.50.</strong> The engine logged the miss, and next week's pricing suggestions learned from it. A tool that cannot say backfired cannot be trusted when it says worked.</p>
+      </div>
+    </div>
+
+    <div class="assure">
+      <h3>Small, careful, and the same menu for everyone.</h3>
+      <p>A trial in Alfredo is one item, one change, for a set number of weeks. Every guest sees the same menu; results are compared against your own history and a control item, never against your customers. If a change backfires, it rolls back in minutes, and the board says so. This is how you were already improving your menu, just measured honestly.</p>
+    </div>
+  </div>
+</section>
+
+<section class="pillars">
+  <div class="wrap">
+    <span class="kicker">What lands on your board</span>
+    <h2 class="section-title">Four kinds of recommendations, one ranked list.</h2>
+    <div class="pillar-grid">
+      <div class="pillar">
+        <div class="pillar-dot" style="background:var(--teal)"></div>
+        <h3>Pricing</h3>
+        <p>Which items can carry a price move, which cannot, and a built in way to prove it on one item before you commit the whole menu.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-dot" style="background:var(--mango)"></div>
+        <h3>Promotions</h3>
+        <p>Bundles and pairings pulled from your real baskets, with the co order evidence attached. Not your best seller. The pairing you would not have guessed.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-dot" style="background:var(--sun)"></div>
+        <h3>Positioning</h3>
+        <p>Where each item sits on your menu and in your market: highlight the hidden gems, dim the underperformers, watch the gaps your competitors leave open.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-dot" style="background:var(--ink)"></div>
+        <h3>Operations</h3>
+        <p>Table time, dayparts, happy hour economics, item availability. Where the floor and the data disagree, you find out early.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <div class="cta-box">
+      <div>
+        <h2>See it on your own data.</h2>
+        <p>Run Alfredo on your own POS data and judge it by its verdicts.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn mango" href="pilot.html#pilot">Request a demo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <div class="foot-inner">
+    <a class="wordmark" href="index.html" style="font-size:1.2rem;">alfredo<span class="dot">·</span></a>
+    <p>© 2026 Alfredo, a BakingInsights AI product · patent pending · we do not inflate numbers</p>
+  </div>
+</footer>
+
+</body>
+</html>

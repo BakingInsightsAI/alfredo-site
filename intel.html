@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>alfredo · guests and competition</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<meta name="description" content="Customer intelligence that finds your confirmed guests and regulars from data you already have, and competitive intel that watches the venues around you.">
+<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav aria-label="Main">
+  <div class="nav-inner">
+    <a class="wordmark" href="index.html">alfredo<span class="dot">·</span></a>
+    <ul class="nav-links">
+      <li><a href="product.html" class="active">Product</a></li>
+      <li><a href="honesty.html">Our numbers rule</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="pilot.html">Work with us</a></li>
+      <li><a class="btn" href="pilot.html#pilot">Request a demo</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section id="regulars">
+  <div class="wrap intel-inner">
+    <div>
+      <span class="kicker">Customer intelligence</span>
+      <h2 class="section-title">Your regulars, found in your own data.</h2>
+      <p class="section-lede">Alfredo works out who your confirmed guests and regulars are from the data you already have: your loyalty program if you run one, and the transaction data itself if you do not. Either way, no new app to launch and no sign up sheet at the host stand. See who keeps the lights on, how regulars differ from occasional visitors, and which patterns deserve a nudge.</p>
+      <p class="section-lede" style="margin-top:16px;">And in keeping with the numbers rule: only confirmed guests are counted. Alfredo never inflates the panel with estimated crowd sizes.</p>
+    </div>
+    <div class="vizcard" aria-label="Regulars vs occasional guests comparison">
+      <div class="radius-title">
+        <h3>Regulars vs occasional guests</h3>
+        <span class="sample-tag">sample data</span>
+      </div>
+      <div class="ci-kpis">
+        <div class="ci-kpi"><span class="mono">412</span><span>confirmed guests</span></div>
+        <div class="ci-kpi"><span class="mono">78</span><span>regulars (5+ visit days)</span></div>
+        <div class="ci-kpi"><span class="mono">31%</span><span>repeat rate</span></div>
+      </div>
+      <div class="ci-row">
+        <div class="ci-row-label">Average visits</div>
+        <div class="ci-bars">
+          <div class="ci-bar"><div class="bar reg" style="width:82%;"></div>8.4</div>
+          <div class="ci-bar"><div class="bar occ" style="width:16%;"></div>1.6</div>
+        </div>
+      </div>
+      <div class="ci-row">
+        <div class="ci-row-label">Average check</div>
+        <div class="ci-bars">
+          <div class="ci-bar"><div class="bar reg" style="width:70%;"></div>$42</div>
+          <div class="ci-bar"><div class="bar occ" style="width:52%;"></div>$31</div>
+        </div>
+      </div>
+      <div class="ci-row">
+        <div class="ci-row-label">Share of tracked revenue</div>
+        <div class="ci-bars">
+          <div class="ci-bar"><div class="bar reg" style="width:58%;"></div>34%</div>
+          <div class="ci-bar"><div class="bar occ" style="width:38%;"></div>22%</div>
+        </div>
+      </div>
+      <div class="ci-legend">
+        <span><span class="sw" style="background:var(--teal);"></span>Regulars</span>
+        <span><span class="sw" style="background:var(--mango);"></span>Occasional</span>
+      </div>
+      <div class="radius-foot">A small group of regulars usually carries an outsized share of revenue. Alfredo shows you exactly who and how, from the data you already have.</div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="vizcard" style="margin-top:22px;">
+      <div class="radius-title">
+        <h3>Your guests, sorted into segments you can name</h3>
+        <span class="sample-tag">sample data</span>
+      </div>
+      <p style="font-size:.85rem;color:var(--ink-60);">Alfredo groups your confirmed guests by how they actually behave: when they come, what they order, how they spend. You rename the segments in your own words, because you know your room better than any algorithm.</p>
+      <div class="seg-grid">
+        <div class="seg">
+          <div class="seg-name">The Friday night crowd <span class="seg-pencil">✎</span></div>
+          <div class="seg-stats"><span class="mono">124 guests</span><span class="mono">$47 avg check</span><span class="mono">3.1 visits</span></div>
+          <p>Weekend evenings, bigger tables, beverage forward orders.</p>
+        </div>
+        <div class="seg">
+          <div class="seg-name">Lunch break locals <span class="seg-pencil">✎</span></div>
+          <div class="seg-stats"><span class="mono">96 guests</span><span class="mono">$22 avg check</span><span class="mono">5.8 visits</span></div>
+          <p>Weekday middays, fast turns, high repeat frequency.</p>
+        </div>
+        <div class="seg">
+          <div class="seg-name">Slow sippers <span class="seg-pencil">✎</span></div>
+          <div class="seg-stats"><span class="mono">58 guests</span><span class="mono">$29 avg check</span><span class="mono">6.4 visits</span></div>
+          <p>Long dwell, beverage only checks. Your best nudge candidates.</p>
+        </div>
+        <div class="seg">
+          <div class="seg-name">Big table hosts <span class="seg-pencil">✎</span></div>
+          <div class="seg-stats"><span class="mono">34 guests</span><span class="mono">$118 avg check</span><span class="mono">2.2 visits</span></div>
+          <p>Group organizers. Fewer visits, the largest checks in the house.</p>
+        </div>
+      </div>
+      <div class="radius-foot">Segments are built from behavior, and the names are yours to edit. One click on any segment asks Alfredo what to do about it.</div>
+    </div>
+  </div>
+</section>
+
+<section id="intel">
+  <div class="wrap">
+    <span class="kicker">Competitive intel</span>
+    <h2 class="section-title">Know your block like you own it.</h2>
+    <p class="section-lede">Alfredo tracks every venue around you: their ratings, their hours, their prices, and what their customers keep saying in reviews. Then it puts the pattern on your weekly board. Walking past a competitor? Photograph their menu, upload it, and see it matched item by item against your own sales.</p>
+
+    <div class="statstrip" aria-label="Sample competitive metrics">
+      <div class="ministat"><div class="ministat-num">36</div><div class="ministat-label">venues tracked in your area</div></div>
+      <div class="ministat"><div class="ministat-num">8 of 36</div><div class="ministat-label">open past midnight: your late night edge</div></div>
+      <div class="ministat"><div class="ministat-num">+1.1</div><div class="ministat-label">your service score vs market average</div></div>
+      <div class="ministat"><div class="ministat-num">1 click</div><div class="ministat-label">from any competitor row to a full menu scan</div></div>
+    </div>
+
+    <div class="viz-grid">
+      <div class="vizcard">
+        <div class="radius-title">
+          <h3>Sentiment radar: you vs your market</h3>
+          <span class="sample-tag">sample data</span>
+        </div>
+        <svg viewBox="-85 0 465 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Radar chart comparing your review scores to competitor average">
+          <g stroke="#E4E0D8" fill="none" stroke-width="1">
+            <polygon points="150,40 245.1,109.1 208.8,220.9 91.2,220.9 54.9,109.1"/>
+            <polygon points="150,65 221.3,116.8 194.1,200.7 105.9,200.7 78.7,116.8"/>
+            <polygon points="150,90 197.6,124.6 179.4,180.5 120.6,180.5 102.5,124.6"/>
+            <polygon points="150,115 173.8,132.3 164.7,160.2 135.3,160.2 126.2,132.3"/>
+            <line x1="150" y1="140" x2="150" y2="40"/>
+            <line x1="150" y1="140" x2="245.1" y2="109.1"/>
+            <line x1="150" y1="140" x2="208.8" y2="220.9"/>
+            <line x1="150" y1="140" x2="91.2" y2="220.9"/>
+            <line x1="150" y1="140" x2="54.9" y2="109.1" stroke-dasharray="3 3"/>
+          </g>
+          <polygon points="150,56 222.3,116.5 197,204.7 103,204.7" fill="#FF8A3D" fill-opacity="0.13" stroke="#FF8A3D" stroke-width="2"/>
+          <polygon points="150,44 243.2,109.7 199.4,208 97.1,212.8" fill="#0E7C66" fill-opacity="0.18" stroke="#0E7C66" stroke-width="2.5"/>
+          <text x="150" y="28" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#1B2D28">Food 4.8</text>
+          <text x="252" y="105" text-anchor="start" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#1B2D28">Service 4.9</text>
+          <text x="214" y="238" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#1B2D28">Value 4.2</text>
+          <text x="88" y="238" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#1B2D28">Speed 4.5</text>
+          <text x="48" y="100" text-anchor="end" font-family="Inter,sans-serif" font-size="11" font-style="italic" fill="rgba(27,45,40,.45)">Ambiance</text>
+          <text x="48" y="113" text-anchor="end" font-family="Inter,sans-serif" font-size="9" font-style="italic" fill="rgba(27,45,40,.45)">n=3 · not enough mentions</text>
+          <g font-family="Inter,sans-serif" font-size="10">
+            <rect x="88" y="248" width="10" height="10" rx="2" fill="#0E7C66"/>
+            <text x="103" y="257" fill="#1B2D28">You</text>
+            <rect x="138" y="248" width="10" height="10" rx="2" fill="#FF8A3D"/>
+            <text x="153" y="257" fill="#1B2D28">Market avg</text>
+          </g>
+        </svg>
+        <div class="radius-foot">Scores are read out of your market's actual reviews. Dimensions without enough mentions stay faded until the data earns them. Even here, no number without evidence.</div>
+      </div>
+
+      <div class="vizcard">
+        <div class="radius-title">
+          <h3>When your market is busy, hour by hour</h3>
+          <span class="sample-tag">sample data</span>
+        </div>
+        <svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Heatmap of market busy times by day and hour">
+          <g font-family="Inter,sans-serif" font-size="10" fill="rgba(27,45,40,.6)">
+            <text x="34" y="42" text-anchor="end">Mon</text><text x="34" y="66" text-anchor="end">Tue</text><text x="34" y="90" text-anchor="end">Wed</text><text x="34" y="114" text-anchor="end">Thu</text><text x="34" y="138" text-anchor="end">Fri</text><text x="34" y="162" text-anchor="end">Sat</text><text x="34" y="186" text-anchor="end">Sun</text>
+            <text x="55" y="20" text-anchor="middle">3p</text><text x="87" y="20" text-anchor="middle">4p</text><text x="119" y="20" text-anchor="middle">5p</text><text x="151" y="20" text-anchor="middle">6p</text><text x="183" y="20" text-anchor="middle">7p</text><text x="215" y="20" text-anchor="middle">8p</text><text x="247" y="20" text-anchor="middle">9p</text><text x="279" y="20" text-anchor="middle">10p</text>
+          </g>
+          <g>
+            <rect x="42" y="30" width="26" height="18" rx="3" fill="#EFF4F2"/><rect x="74" y="30" width="26" height="18" rx="3" fill="#EFF4F2"/><rect x="106" y="30" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="138" y="30" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="170" y="30" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="202" y="30" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="234" y="30" width="26" height="18" rx="3" fill="#EFF4F2"/><rect x="266" y="30" width="26" height="18" rx="3" fill="#EFF4F2"/>
+            <rect x="42" y="54" width="26" height="18" rx="3" fill="#EFF4F2"/><rect x="74" y="54" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="106" y="54" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="138" y="54" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="170" y="54" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="202" y="54" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="234" y="54" width="26" height="18" rx="3" fill="#EFF4F2"/><rect x="266" y="54" width="26" height="18" rx="3" fill="#EFF4F2"/>
+            <rect x="42" y="78" width="26" height="18" rx="3" fill="#EFF4F2"/><rect x="74" y="78" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="106" y="78" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="138" y="78" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="170" y="78" width="26" height="18" rx="3" fill="#FFC48A"/><rect x="202" y="78" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="234" y="78" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="266" y="78" width="26" height="18" rx="3" fill="#EFF4F2"/>
+            <rect x="42" y="102" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="74" y="102" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="106" y="102" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="138" y="102" width="26" height="18" rx="3" fill="#FFC48A"/><rect x="170" y="102" width="26" height="18" rx="3" fill="#FFC48A"/><rect x="202" y="102" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="234" y="102" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="266" y="102" width="26" height="18" rx="3" fill="#DCEAE5"/>
+            <rect x="42" y="126" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="74" y="126" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="106" y="126" width="26" height="18" rx="3" fill="#FFC48A"/><rect x="138" y="126" width="26" height="18" rx="3" fill="#FF8A3D"/><rect x="170" y="126" width="26" height="18" rx="3" fill="#F0603E"/><rect x="202" y="126" width="26" height="18" rx="3" fill="#F0603E"/><rect x="234" y="126" width="26" height="18" rx="3" fill="#FF8A3D"/><rect x="266" y="126" width="26" height="18" rx="3" fill="#FFC48A"/>
+            <rect x="42" y="150" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="74" y="150" width="26" height="18" rx="3" fill="#FFC48A"/><rect x="106" y="150" width="26" height="18" rx="3" fill="#FFC48A"/><rect x="138" y="150" width="26" height="18" rx="3" fill="#FF8A3D"/><rect x="170" y="150" width="26" height="18" rx="3" fill="#F0603E"/><rect x="202" y="150" width="26" height="18" rx="3" fill="#F0603E"/><rect x="234" y="150" width="26" height="18" rx="3" fill="#FF8A3D"/><rect x="266" y="150" width="26" height="18" rx="3" fill="#FF8A3D"/>
+            <rect x="42" y="174" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="74" y="174" width="26" height="18" rx="3" fill="#FFC48A"/><rect x="106" y="174" width="26" height="18" rx="3" fill="#FFC48A"/><rect x="138" y="174" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="170" y="174" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="202" y="174" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="234" y="174" width="26" height="18" rx="3" fill="#EFF4F2"/><rect x="266" y="174" width="26" height="18" rx="3" fill="#EFF4F2"/>
+          </g>
+          <g font-family="Inter,sans-serif" font-size="10" fill="rgba(27,45,40,.6)">
+            <text x="42" y="212">Quiet</text>
+            <rect x="76" y="204" width="14" height="9" rx="2" fill="#EFF4F2"/><rect x="92" y="204" width="14" height="9" rx="2" fill="#DCEAE5"/><rect x="108" y="204" width="14" height="9" rx="2" fill="#FFE9BD"/><rect x="124" y="204" width="14" height="9" rx="2" fill="#FFC48A"/><rect x="140" y="204" width="14" height="9" rx="2" fill="#FF8A3D"/><rect x="156" y="204" width="14" height="9" rx="2" fill="#F0603E"/>
+            <text x="178" y="212">Busy</text>
+          </g>
+        </svg>
+        <div class="radius-foot">Built from public busy times data across your whole market, then compared against your own volume. The gap between the two is where your money is hiding.</div>
+      </div>
+    </div>
+
+    <div class="vizcard" style="margin-top:22px;">
+      <div class="radius-title">
+        <h3>Menu Scanner: their photo, matched to your numbers</h3>
+        <span class="sample-tag">sample data</span>
+      </div>
+      <p style="font-size:.85rem;color:var(--ink-60);">Upload a photo of a competitor menu. Alfredo reads it, matches items against your own, and shows its confidence on every pairing. You confirm or dismiss each one before anything else happens.</p>
+      <table class="match-table">
+        <thead>
+          <tr><th>Their item</th><th>Your item</th><th>Match</th><th>Gap</th><th></th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Smash Burger · <span class="mono">$13.50</span></td>
+            <td>House Burger · <span class="mono">$11.00</span></td>
+            <td><span class="conf">92%</span></td>
+            <td>You are $2.50 under</td>
+            <td><button class="mini-btn" type="button">Try this price</button></td>
+          </tr>
+          <tr>
+            <td>Loaded Tots · <span class="mono">$9.00</span></td>
+            <td>Tater Tots · <span class="mono">$8.00</span></td>
+            <td><span class="conf">87%</span></td>
+            <td>You are $1.00 under</td>
+            <td><span style="font-size:.76rem;color:var(--teal);font-weight:600;">✓ confirmed</span></td>
+          </tr>
+          <tr>
+            <td>Chicken Sando · <span class="mono">$12.00</span></td>
+            <td>Crispy Chicken · <span class="mono">$12.50</span></td>
+            <td><span class="conf low">64%</span></td>
+            <td>Needs your review</td>
+            <td><span class="review-icons">👍 👎</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="radius-foot">"Try this price" only appears on matches you have confirmed, and only when the competitor price came from a published menu, never an estimate.</div>
+    </div>
+
+    <p class="cap-line">Also inside the Competitive tab:</p>
+    <div class="cap-list">
+      <span class="cap">AI written SWOT from your market's reviews</span>
+      <span class="cap">Interactive competitor map</span>
+      <span class="cap">Census demographics per trade area</span>
+      <span class="cap">Nightlife spillover score</span>
+      <span class="cap">Extended hours revenue scenarios</span>
+      <span class="cap">Price tier positioning</span>
+      <span class="cap">One click competitor menu scan</span>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <div class="cta-box">
+      <div>
+        <h2>Meet your regulars.</h2>
+        <p>Run Alfredo on your own data and see who keeps the lights on.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn mango" href="mailto:contact@bakinginsightsai.com?subject=Demo%20request">Request a demo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <div class="foot-inner">
+    <a class="wordmark" href="index.html" style="font-size:1.2rem;">alfredo<span class="dot">·</span></a>
+    <p>© 2026 Alfredo, a BakingInsights AI product · patent pending · we do not inflate numbers</p>
+  </div>
+</footer>
+
+</body>
+</html>
