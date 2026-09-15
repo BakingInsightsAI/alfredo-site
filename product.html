@@ -10,6 +10,19 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script>
+(function () {
+  var map = {
+    "#board": "board.html",
+    "#measured": "board.html",
+    "#menulab": "menu.html",
+    "#cost": "menu.html",
+    "#intel": "intel.html"
+  };
+  var h = window.location.hash;
+  if (map[h]) { window.location.replace(map[h] + h); }
+})();
+</script>
 </head>
 <body>
 
