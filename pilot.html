@@ -10,6 +10,32 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  /* demo request band: stack heading above a full width form */
+  #pilot .cta-box{grid-template-columns:1fr;gap:28px;align-items:start;}
+  .demo-form{display:grid;grid-template-columns:1fr 1fr;gap:16px 20px;}
+  @media(max-width:700px){.demo-form{grid-template-columns:1fr;}}
+  .demo-form label{
+    display:flex;flex-direction:column;gap:6px;
+    font-family:'Inter',sans-serif;font-size:.84rem;font-weight:600;color:var(--cream);
+  }
+  .demo-form .full{grid-column:1/-1;}
+  .demo-form input,.demo-form select,.demo-form textarea{
+    font-family:'Inter',sans-serif;font-size:.95rem;color:var(--ink);
+    background:var(--cream);border:1px solid rgba(251,248,242,.35);border-radius:10px;
+    padding:11px 13px;width:100%;
+  }
+  .demo-form textarea{resize:vertical;min-height:72px;}
+  .demo-form input:focus,.demo-form select:focus,.demo-form textarea:focus{
+    outline:2px solid var(--sun);outline-offset:1px;
+  }
+  .demo-form input::placeholder,.demo-form textarea::placeholder{color:rgba(27,45,40,.45);}
+  .demo-form button[type="submit"]{grid-column:1/-1;justify-self:start;}
+  .demo-form button[disabled]{opacity:.6;cursor:default;}
+  #form-status{grid-column:1/-1;font-size:.85rem;color:var(--cream);}
+  #form-status:empty{display:none;}
+  .form-done{font-size:1rem;font-weight:600;color:var(--cream);}
+</style>
 </head>
 <body>
 
@@ -77,9 +103,46 @@
         <h2>Run Alfredo on your data. Judge it by its verdicts.</h2>
         <p>Pilot partners get the full platform on their own POS data, direct access to the founder, and pricing that reflects being early. If the boards do not earn their keep, the data will say so. That is the whole point.</p>
       </div>
-      <div class="cta-actions">
-        <a class="btn mango" href="mailto:contact@bakinginsightsai.com?subject=Demo%20request">Request a demo</a>
-        <span class="cta-fine">Works with Toast and Clover POS, from single locations to multi location groups.</span>
+      <div>
+        <form class="demo-form" action="https://api.web3forms.com/submit" method="POST" id="demo-form">
+          <input type="hidden" name="access_key" value="6ce52bfe-d286-44ff-992c-bb7565c31fb6">
+          <input type="hidden" name="subject" value="Demo request from bakinginsightsai.com">
+          <input type="hidden" name="from_name" value="Alfredo website">
+          <input type="checkbox" name="botcheck" class="hidden" style="display:none;" tabindex="-1" autocomplete="off">
+
+          <label>Name
+            <input type="text" name="name" required placeholder="Your name">
+          </label>
+          <label>Business name
+            <input type="text" name="business" required placeholder="Your restaurant, bar, cafe, or truck">
+          </label>
+          <label>Email
+            <input type="email" name="email" required placeholder="you@yourbusiness.com">
+          </label>
+          <label>POS system
+            <select name="pos" required>
+              <option value="" disabled selected>Select your POS</option>
+              <option>Toast</option>
+              <option>Clover</option>
+              <option>Square</option>
+              <option>Other</option>
+            </select>
+          </label>
+          <label>Locations
+            <select name="locations" required>
+              <option value="" disabled selected>How many locations</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3 or more</option>
+            </select>
+          </label>
+          <label class="full">Anything you want us to know (optional)
+            <textarea name="message" rows="3" placeholder="Optional"></textarea>
+          </label>
+          <button type="submit" class="btn mango">Request a demo</button>
+          <p id="form-status" role="status" aria-live="polite"></p>
+        </form>
+        <p class="cta-fine" style="margin-top:14px;">Works with Toast and Clover POS, from single locations to multi location groups.</p>
       </div>
     </div>
   </div>
@@ -92,5 +155,33 @@
   </div>
 </footer>
 
+<script>
+(function () {
+  var form = document.getElementById('demo-form');
+  if (!form) return;
+  var status = document.getElementById('form-status');
+  var btn = form.querySelector('button[type="submit"]');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    status.textContent = '';
+    btn.disabled = true;
+    var data = {};
+    new FormData(form).forEach(function (v, k) { data[k] = v; });
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    }).then(function (r) {
+      return r.json();
+    }).then(function (res) {
+      if (!res.success) throw new Error('rejected');
+      form.innerHTML = '<p class="form-done">Got it. We will reply within one business day.</p>';
+    }).catch(function () {
+      btn.disabled = false;
+      status.textContent = 'Something went wrong. Email us directly at contact@bakinginsightsai.com.';
+    });
+  });
+})();
+</script>
 </body>
 </html>
