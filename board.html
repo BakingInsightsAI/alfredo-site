@@ -10,6 +10,29 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  /* breadcrumb back to the hub */
+  .crumb{font-size:.85rem;margin-bottom:18px;}
+  .crumb a{
+    font-family:'Inter',sans-serif;font-weight:500;color:var(--ink-60);text-decoration:none;
+  }
+  .crumb a:hover{color:var(--teal);text-decoration:underline;}
+  .intel-inner .crumb{grid-column:1/-1;}
+  /* next question strip */
+  .next-strip{border-top:1px solid var(--ink-12);padding:40px 0;}
+  .next-q-label{
+    font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--teal);margin-bottom:14px;display:block;
+  }
+  .next-q{
+    font-family:'Nunito',sans-serif;font-weight:800;font-size:clamp(1.15rem,2vw,1.5rem);
+    line-height:1.2;color:var(--ink);text-decoration:none;
+    display:inline-flex;align-items:baseline;gap:10px;
+  }
+  .next-q:hover{color:var(--teal);}
+  .next-q .arw{display:inline-block;transition:transform .15s;}
+  .next-q:hover .arw{transform:translateX(4px);}
+</style>
 </head>
 <body>
 
@@ -29,6 +52,7 @@
 
 <section id="board" style="padding-top:64px;">
   <div class="wrap">
+    <p class="crumb"><a href="product.html">← All three questions</a></p>
     <span class="kicker">How Alfredo works</span>
     <h2 class="section-title">It hands you the recommendation, then grades it.</h2>
     <p class="section-lede">Dashboards show you charts and leave the thinking to you. Alfredo reads your POS, hands you a short ranked list of recommendations worth trying, and when you try one, it measures what actually happened and gets smarter about your business. Suggest, try, verdict, repeat.</p>
@@ -111,6 +135,13 @@
         <p>Table time, dayparts, happy hour economics, item availability. Where the floor and the data disagree, you find out early.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="next-strip">
+  <div class="wrap">
+    <p class="next-q-label">Next question</p>
+    <a class="next-q" href="menu.html">Is my menu making me money? <span class="arw">→</span></a>
   </div>
 </section>
 

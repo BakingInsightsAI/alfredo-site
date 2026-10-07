@@ -10,6 +10,29 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  /* breadcrumb back to the hub */
+  .crumb{font-size:.85rem;margin-bottom:18px;}
+  .crumb a{
+    font-family:'Inter',sans-serif;font-weight:500;color:var(--ink-60);text-decoration:none;
+  }
+  .crumb a:hover{color:var(--teal);text-decoration:underline;}
+  .intel-inner .crumb{grid-column:1/-1;}
+  /* next question strip */
+  .next-strip{border-top:1px solid var(--ink-12);padding:40px 0;}
+  .next-q-label{
+    font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--teal);margin-bottom:14px;display:block;
+  }
+  .next-q{
+    font-family:'Nunito',sans-serif;font-weight:800;font-size:clamp(1.15rem,2vw,1.5rem);
+    line-height:1.2;color:var(--ink);text-decoration:none;
+    display:inline-flex;align-items:baseline;gap:10px;
+  }
+  .next-q:hover{color:var(--teal);}
+  .next-q .arw{display:inline-block;transition:transform .15s;}
+  .next-q:hover .arw{transform:translateX(4px);}
+</style>
 </head>
 <body>
 
@@ -29,6 +52,7 @@
 
 <section id="menulab">
   <div class="wrap">
+    <p class="crumb"><a href="product.html">← All three questions</a></p>
     <span class="kicker">The menu lab</span>
     <h2 class="section-title">Your menu is a draft. Treat it like one.</h2>
     <p class="section-lede">Menu Advisor is a working copy of your menu you can experiment on. Drag items, highlight, dim, badge, reprice, build bundles. Every suggestion arrives with its evidence, and any edit can become a small, measured trial in four clicks.</p>
@@ -89,6 +113,13 @@
       <p>Prices change at the till and the website never hears about it, or the other way around. Customers see one price and pay another, and nobody notices because cross checking them is nobody's job. Alfredo compares your published menu against what customers actually pay and flags every gap with the evidence: in real client data it found website prices that had been stale for months, one off by 40 to 50 percent, and one website price the till had never started charging. It never changes a price anywhere. It flags; you decide.</p>
     </div>
     <p class="section-lede" style="margin-top:34px;">With cost data connected, every recommendation on the board argues from real margins: a price change shows cost, price, and margin so you can see it is safe; a promotion states what the giveaway costs and the exact volume needed to break even; a cross sell states the margin each attachment adds. The same add on data doubles as menu development evidence: which extras your guests already vote for with their orders, and what each one earns, for when you are deciding what to build next. Alfredo recommends and measures. You decide.</p>
+  </div>
+</section>
+
+<section class="next-strip">
+  <div class="wrap">
+    <p class="next-q-label">Next question</p>
+    <a class="next-q" href="intel.html">Who is in my room, and what is happening on my street? <span class="arw">→</span></a>
   </div>
 </section>
 
