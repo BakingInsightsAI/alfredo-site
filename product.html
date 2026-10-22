@@ -135,7 +135,7 @@
 
 <section>
   <div class="wrap">
-    <p class="section-lede">Nothing new to buy: Alfredo connects to the Toast or Clover POS you already run. <a class="more" href="pricing.html">Pricing →</a></p>
+    <p class="section-lede">Nothing new to buy: Alfredo connects to your existing POS system. <a class="more" href="pricing.html">Pricing →</a></p>
   </div>
 </section>
 
@@ -592,33 +592,49 @@
   var tabs = [].slice.call(document.querySelectorAll('.tab'));
   var bar = document.querySelector('.tabbar');
 
-  function show(name, setHash, doScroll) {
-    if (!panels[name]) name = 'overview';
-    names.forEach(function (n) { panels[n].style.display = (n === name) ? '' : 'none'; });
-    tabs.forEach(function (t) {
-      var on = t.getAttribute('data-t') === name;
-      t.classList.toggle('on', on);
-      t.setAttribute('aria-selected', on ? 'true' : 'false');
-    });
-    if (setHash) { history.replaceState(null, '', '#' + name); }
-    if (doScroll) { bar.scrollIntoView({ block: 'start' }); }
-  }
-
-  tabs.forEach(function (t) {
-    t.addEventListener('click', function () { show(t.getAttribute('data-t'), true, true); });
-  });
-  [].slice.call(document.querySelectorAll('[data-go]')).forEach(function (b) {
-    b.addEventListener('click', function () { show(b.getAttribute('data-go'), true, true); });
-  });
-
   var map = {
     '#overview': 'overview', '#chat': 'overview',
     '#board': 'board', '#measured': 'board',
     '#menu': 'menu', '#menulab': 'menu', '#cost': 'menu',
     '#intel': 'intel', '#regulars': 'intel'
   };
+
+  // apply the visual switch only; never touches history
+  function apply(name, doScroll) {
+    if (!panels[name]) { name = 'overview'; }
+    names.forEach(function (n) { panels[n].style.display = (n === name) ? '' : 'none'; });
+    tabs.forEach(function (t) {
+      var on = t.getAttribute('data-t') === name;
+      t.classList.toggle('on', on);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    if (doScroll) { bar.scrollIntoView({ block: 'start' }); }
+    return name;
+  }
+
+  // user initiated: add a history entry so the back button walks the tabs
+  function go(name) {
+    var n = apply(name, true);
+    history.pushState({ tab: n }, '', '#' + n);
+  }
+
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () { go(t.getAttribute('data-t')); });
+  });
+  [].slice.call(document.querySelectorAll('[data-go]')).forEach(function (b) {
+    b.addEventListener('click', function () { go(b.getAttribute('data-go')); });
+  });
+
+  // back and forward: switch without adding an entry
+  window.addEventListener('popstate', function (e) {
+    var n = (e.state && e.state.tab) || map[window.location.hash] || 'overview';
+    apply(n, true);
+  });
+
+  // initial load: open the right tab, seed this entry, then honour an inner id
   var h = window.location.hash;
-  show(map[h] || 'overview', false, false);
+  var initial = apply(map[h] || 'overview', false);
+  history.replaceState({ tab: initial }, '', window.location.href);
   if (h.length > 1) {
     var el = document.getElementById(h.slice(1));
     if (el) { el.scrollIntoView({ block: 'start' }); }
