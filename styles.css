@@ -411,3 +411,14 @@
 /* founding partner band: gold with ink text; any button inside inverts */
 .founding .btn{background:var(--ink);color:var(--cream);}
 .founding .btn:hover{background:var(--wine-deep);color:var(--cream);}
+
+/* ---------- v2.26 surface rule: gold lives on light, cream lives on wine ---------- */
+/* wine and wine-gradient bands: .cta-box (all CTA bands + the pilot form band),
+   .manifesto-hero and .honesty (gradient bands). The gold .founding band is not
+   in any of these containers, so its ink button is untouched. */
+.cta-box .btn,
+.manifesto-hero .btn,
+.honesty .btn{background:var(--cream);color:var(--wine);}
+.cta-box .btn:hover,
+.manifesto-hero .btn:hover,
+.honesty .btn:hover{background:var(--champagne);color:var(--ink);}
