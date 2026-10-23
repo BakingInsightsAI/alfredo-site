@@ -16,7 +16,7 @@
   .card-go{
     display:inline-block;margin-top:14px;
     font-family:'Nunito',sans-serif;font-weight:800;font-size:1rem;
-    color:var(--teal);background:none;border:none;padding:0;cursor:pointer;text-align:left;
+    color:var(--wine);background:none;border:none;padding:0;cursor:pointer;text-align:left;
   }
   .card-go:hover{text-decoration:underline;}
   /* tab bar */
@@ -32,21 +32,22 @@
     padding:16px 14px;border-bottom:3px solid transparent;white-space:nowrap;
   }
   .tab:hover{color:var(--ink);}
-  .tab.on{color:var(--teal);border-bottom-color:var(--mango);}
-  .tab:focus-visible{outline:3px solid var(--mango);outline-offset:-3px;border-radius:4px;}
+  .tab.on{color:var(--wine);border-bottom-color:var(--gold);}
+  .tab:focus-visible{outline:2px solid var(--gold);outline-offset:-3px;border-radius:4px;}
   .panel [id]{scroll-margin-top:72px;}
   /* next question strip */
   .next-strip{border-top:1px solid var(--ink-12);padding:40px 0;}
   .next-q-label{
-    font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
-    color:var(--teal);margin-bottom:14px;display:block;
+    display:flex;align-items:center;gap:10px;font-weight:600;font-size:.88rem;
+    color:var(--wine);text-transform:none;letter-spacing:normal;margin-bottom:14px;
   }
+  .next-q-label::before{content:"";width:26px;height:4px;border-radius:2px;background:var(--gold);flex:0 0 auto;}
   .next-q{
     font-family:'Nunito',sans-serif;font-weight:800;font-size:clamp(1.15rem,2vw,1.5rem);
     line-height:1.2;color:var(--ink);background:none;border:none;padding:0;cursor:pointer;
     display:inline-flex;align-items:baseline;gap:10px;text-align:left;
   }
-  .next-q:hover{color:var(--teal);}
+  .next-q:hover{color:var(--wine);}
   .next-q .arw{display:inline-block;transition:transform .15s;}
   .next-q:hover .arw{transform:translateX(4px);}
 </style>
@@ -207,17 +208,17 @@
     <h2 class="section-title">Four kinds of recommendations, one ranked list.</h2>
     <div class="pillar-grid">
       <div class="pillar">
-        <div class="pillar-dot" style="background:var(--teal)"></div>
+        <div class="pillar-dot" style="background:var(--wine)"></div>
         <h3>Pricing</h3>
         <p>Which items can carry a price move, which cannot, and a built in way to prove it on one item before you commit the whole menu.</p>
       </div>
       <div class="pillar">
-        <div class="pillar-dot" style="background:var(--mango)"></div>
+        <div class="pillar-dot" style="background:var(--gold)"></div>
         <h3>Promotions</h3>
         <p>Bundles and pairings pulled from your real baskets, with the co order evidence attached. Not your best seller. The pairing you would not have guessed.</p>
       </div>
       <div class="pillar">
-        <div class="pillar-dot" style="background:var(--sun)"></div>
+        <div class="pillar-dot" style="background:var(--champagne)"></div>
         <h3>Positioning</h3>
         <p>Where each item sits on your menu and in your market: highlight the hidden gems, dim the underperformers, watch the gaps your competitors leave open.</p>
       </div>
@@ -262,17 +263,17 @@
     <p class="section-lede">Menu Advisor is a working copy of your menu you can experiment on. Drag items, highlight, dim, badge, reprice, build bundles. Every suggestion arrives with its evidence, and any edit can become a small, measured trial in four clicks.</p>
     <div class="pillar-grid" style="margin-top:52px;">
       <div class="pillar">
-        <div class="pillar-dot" style="background:var(--teal)"></div>
+        <div class="pillar-dot" style="background:var(--wine)"></div>
         <h3>Suggestions with receipts</h3>
         <p>Up to ten at a time, each carrying its evidence: co order lift, competitor prices, margin math, verbatim lines from your own reviews.</p>
       </div>
       <div class="pillar">
-        <div class="pillar-dot" style="background:var(--mango)"></div>
+        <div class="pillar-dot" style="background:var(--gold)"></div>
         <h3>Four clicks to a fair trial</h3>
         <p>Pick the item, pick the change, pick a control, pick a duration. The AI proposes control items and shows its match score. You decide.</p>
       </div>
       <div class="pillar">
-        <div class="pillar-dot" style="background:var(--sun)"></div>
+        <div class="pillar-dot" style="background:var(--champagne)"></div>
         <h3>An honest scoreboard</h3>
         <p>Your edits tally into estimated impact, and the scoreboard keeps estimates and measured results clearly apart. They never blend.</p>
       </div>
@@ -292,17 +293,17 @@
     <p class="section-lede">For businesses that share their recipe and ingredient costs, Alfredo adds a second layer: it connects what each dish costs to make with what it sells for, turning sales analytics into margin intelligence.</p>
     <div class="pillar-grid">
       <div class="pillar">
-        <div class="pillar-dot" style="background:var(--teal)"></div>
+        <div class="pillar-dot" style="background:var(--wine)"></div>
         <h3>Where each dish's money goes</h3>
         <p>Click any item and see its cost ingredient by ingredient: which single ingredient dominates, what packaging adds, and when each cost was last confirmed. Every cost carries its date, so you always know how fresh the number is.</p>
       </div>
       <div class="pillar">
-        <div class="pillar-dot" style="background:var(--mango)"></div>
+        <div class="pillar-dot" style="background:var(--gold)"></div>
         <h3>The worry list, before the worry</h3>
         <p>Alfredo ranks the ingredients that drive your menu wide costs, shows what a 10 percent price rise in each would cost you per month, and tracks how volatile each has been over the past year.</p>
       </div>
       <div class="pillar">
-        <div class="pillar-dot" style="background:var(--sun)"></div>
+        <div class="pillar-dot" style="background:var(--champagne)"></div>
         <h3>Where costs rose but prices did not</h3>
         <p>The repricing queue finds items whose ingredient costs climbed while menu prices stood still, quantifies the weekly margin bleed, and feeds the worst cases into the weekly board. It shows the mirror too: where costs fell and margins quietly improved.</p>
       </div>
@@ -385,8 +386,8 @@
         </div>
       </div>
       <div class="ci-legend">
-        <span><span class="sw" style="background:var(--teal);"></span>Regulars</span>
-        <span><span class="sw" style="background:var(--mango);"></span>Occasional</span>
+        <span><span class="sw" style="background:var(--wine);"></span>Regulars</span>
+        <span><span class="sw" style="background:var(--gold);"></span>Occasional</span>
       </div>
       <div class="radius-foot">A small group of regulars usually carries an outsized share of revenue. Alfredo shows you exactly who and how, from the data you already have.</div>
     </div>
@@ -457,19 +458,19 @@
             <line x1="150" y1="140" x2="91.2" y2="220.9"/>
             <line x1="150" y1="140" x2="54.9" y2="109.1" stroke-dasharray="3 3"/>
           </g>
-          <polygon points="150,56 222.3,116.5 197,204.7 103,204.7" fill="#FF8A3D" fill-opacity="0.13" stroke="#FF8A3D" stroke-width="2"/>
-          <polygon points="150,44 243.2,109.7 199.4,208 97.1,212.8" fill="#0E7C66" fill-opacity="0.18" stroke="#0E7C66" stroke-width="2.5"/>
-          <text x="150" y="28" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#1B2D28">Food 4.8</text>
-          <text x="252" y="105" text-anchor="start" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#1B2D28">Service 4.9</text>
-          <text x="214" y="238" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#1B2D28">Value 4.2</text>
-          <text x="88" y="238" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#1B2D28">Speed 4.5</text>
-          <text x="48" y="100" text-anchor="end" font-family="Inter,sans-serif" font-size="11" font-style="italic" fill="rgba(27,45,40,.45)">Ambiance</text>
-          <text x="48" y="113" text-anchor="end" font-family="Inter,sans-serif" font-size="9" font-style="italic" fill="rgba(27,45,40,.45)">n=3 · not enough mentions</text>
+          <polygon points="150,56 222.3,116.5 197,204.7 103,204.7" fill="#D9A441" fill-opacity="0.13" stroke="#D9A441" stroke-width="2"/>
+          <polygon points="150,44 243.2,109.7 199.4,208 97.1,212.8" fill="#6E2C3E" fill-opacity="0.18" stroke="#6E2C3E" stroke-width="2.5"/>
+          <text x="150" y="28" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#241A1D">Food 4.8</text>
+          <text x="252" y="105" text-anchor="start" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#241A1D">Service 4.9</text>
+          <text x="214" y="238" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#241A1D">Value 4.2</text>
+          <text x="88" y="238" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" fill="#241A1D">Speed 4.5</text>
+          <text x="48" y="100" text-anchor="end" font-family="Inter,sans-serif" font-size="11" font-style="italic" fill="rgba(36,26,29,.45)">Ambiance</text>
+          <text x="48" y="113" text-anchor="end" font-family="Inter,sans-serif" font-size="9" font-style="italic" fill="rgba(36,26,29,.45)">n=3 · not enough mentions</text>
           <g font-family="Inter,sans-serif" font-size="10">
-            <rect x="88" y="248" width="10" height="10" rx="2" fill="#0E7C66"/>
-            <text x="103" y="257" fill="#1B2D28">You</text>
-            <rect x="138" y="248" width="10" height="10" rx="2" fill="#FF8A3D"/>
-            <text x="153" y="257" fill="#1B2D28">Market avg</text>
+            <rect x="88" y="248" width="10" height="10" rx="2" fill="#6E2C3E"/>
+            <text x="103" y="257" fill="#241A1D">You</text>
+            <rect x="138" y="248" width="10" height="10" rx="2" fill="#D9A441"/>
+            <text x="153" y="257" fill="#241A1D">Market avg</text>
           </g>
         </svg>
         <div class="radius-foot">Scores are read out of your market's actual reviews. Dimensions without enough mentions stay faded until the data earns them. Even here, no number without evidence.</div>
@@ -481,22 +482,22 @@
           <span class="sample-tag">sample data</span>
         </div>
         <svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Heatmap of market busy times by day and hour">
-          <g font-family="Inter,sans-serif" font-size="10" fill="rgba(27,45,40,.6)">
+          <g font-family="Inter,sans-serif" font-size="10" fill="rgba(36,26,29,.6)">
             <text x="34" y="42" text-anchor="end">Mon</text><text x="34" y="66" text-anchor="end">Tue</text><text x="34" y="90" text-anchor="end">Wed</text><text x="34" y="114" text-anchor="end">Thu</text><text x="34" y="138" text-anchor="end">Fri</text><text x="34" y="162" text-anchor="end">Sat</text><text x="34" y="186" text-anchor="end">Sun</text>
             <text x="55" y="20" text-anchor="middle">3p</text><text x="87" y="20" text-anchor="middle">4p</text><text x="119" y="20" text-anchor="middle">5p</text><text x="151" y="20" text-anchor="middle">6p</text><text x="183" y="20" text-anchor="middle">7p</text><text x="215" y="20" text-anchor="middle">8p</text><text x="247" y="20" text-anchor="middle">9p</text><text x="279" y="20" text-anchor="middle">10p</text>
           </g>
           <g>
-            <rect x="42" y="30" width="26" height="18" rx="3" fill="#EFF4F2"/><rect x="74" y="30" width="26" height="18" rx="3" fill="#EFF4F2"/><rect x="106" y="30" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="138" y="30" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="170" y="30" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="202" y="30" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="234" y="30" width="26" height="18" rx="3" fill="#EFF4F2"/><rect x="266" y="30" width="26" height="18" rx="3" fill="#EFF4F2"/>
-            <rect x="42" y="54" width="26" height="18" rx="3" fill="#EFF4F2"/><rect x="74" y="54" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="106" y="54" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="138" y="54" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="170" y="54" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="202" y="54" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="234" y="54" width="26" height="18" rx="3" fill="#EFF4F2"/><rect x="266" y="54" width="26" height="18" rx="3" fill="#EFF4F2"/>
-            <rect x="42" y="78" width="26" height="18" rx="3" fill="#EFF4F2"/><rect x="74" y="78" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="106" y="78" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="138" y="78" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="170" y="78" width="26" height="18" rx="3" fill="#FFC48A"/><rect x="202" y="78" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="234" y="78" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="266" y="78" width="26" height="18" rx="3" fill="#EFF4F2"/>
-            <rect x="42" y="102" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="74" y="102" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="106" y="102" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="138" y="102" width="26" height="18" rx="3" fill="#FFC48A"/><rect x="170" y="102" width="26" height="18" rx="3" fill="#FFC48A"/><rect x="202" y="102" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="234" y="102" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="266" y="102" width="26" height="18" rx="3" fill="#DCEAE5"/>
-            <rect x="42" y="126" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="74" y="126" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="106" y="126" width="26" height="18" rx="3" fill="#FFC48A"/><rect x="138" y="126" width="26" height="18" rx="3" fill="#FF8A3D"/><rect x="170" y="126" width="26" height="18" rx="3" fill="#F0603E"/><rect x="202" y="126" width="26" height="18" rx="3" fill="#F0603E"/><rect x="234" y="126" width="26" height="18" rx="3" fill="#FF8A3D"/><rect x="266" y="126" width="26" height="18" rx="3" fill="#FFC48A"/>
-            <rect x="42" y="150" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="74" y="150" width="26" height="18" rx="3" fill="#FFC48A"/><rect x="106" y="150" width="26" height="18" rx="3" fill="#FFC48A"/><rect x="138" y="150" width="26" height="18" rx="3" fill="#FF8A3D"/><rect x="170" y="150" width="26" height="18" rx="3" fill="#F0603E"/><rect x="202" y="150" width="26" height="18" rx="3" fill="#F0603E"/><rect x="234" y="150" width="26" height="18" rx="3" fill="#FF8A3D"/><rect x="266" y="150" width="26" height="18" rx="3" fill="#FF8A3D"/>
-            <rect x="42" y="174" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="74" y="174" width="26" height="18" rx="3" fill="#FFC48A"/><rect x="106" y="174" width="26" height="18" rx="3" fill="#FFC48A"/><rect x="138" y="174" width="26" height="18" rx="3" fill="#FFE9BD"/><rect x="170" y="174" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="202" y="174" width="26" height="18" rx="3" fill="#DCEAE5"/><rect x="234" y="174" width="26" height="18" rx="3" fill="#EFF4F2"/><rect x="266" y="174" width="26" height="18" rx="3" fill="#EFF4F2"/>
+            <rect x="42" y="30" width="26" height="18" rx="3" fill="#F7EFE4"/><rect x="74" y="30" width="26" height="18" rx="3" fill="#F7EFE4"/><rect x="106" y="30" width="26" height="18" rx="3" fill="#F0D9A6"/><rect x="138" y="30" width="26" height="18" rx="3" fill="#F0D9A6"/><rect x="170" y="30" width="26" height="18" rx="3" fill="#E8C274"/><rect x="202" y="30" width="26" height="18" rx="3" fill="#F0D9A6"/><rect x="234" y="30" width="26" height="18" rx="3" fill="#F7EFE4"/><rect x="266" y="30" width="26" height="18" rx="3" fill="#F7EFE4"/>
+            <rect x="42" y="54" width="26" height="18" rx="3" fill="#F7EFE4"/><rect x="74" y="54" width="26" height="18" rx="3" fill="#F0D9A6"/><rect x="106" y="54" width="26" height="18" rx="3" fill="#F0D9A6"/><rect x="138" y="54" width="26" height="18" rx="3" fill="#E8C274"/><rect x="170" y="54" width="26" height="18" rx="3" fill="#E8C274"/><rect x="202" y="54" width="26" height="18" rx="3" fill="#F0D9A6"/><rect x="234" y="54" width="26" height="18" rx="3" fill="#F7EFE4"/><rect x="266" y="54" width="26" height="18" rx="3" fill="#F7EFE4"/>
+            <rect x="42" y="78" width="26" height="18" rx="3" fill="#F7EFE4"/><rect x="74" y="78" width="26" height="18" rx="3" fill="#F0D9A6"/><rect x="106" y="78" width="26" height="18" rx="3" fill="#E8C274"/><rect x="138" y="78" width="26" height="18" rx="3" fill="#E8C274"/><rect x="170" y="78" width="26" height="18" rx="3" fill="#D9A441"/><rect x="202" y="78" width="26" height="18" rx="3" fill="#E8C274"/><rect x="234" y="78" width="26" height="18" rx="3" fill="#F0D9A6"/><rect x="266" y="78" width="26" height="18" rx="3" fill="#F7EFE4"/>
+            <rect x="42" y="102" width="26" height="18" rx="3" fill="#F0D9A6"/><rect x="74" y="102" width="26" height="18" rx="3" fill="#F0D9A6"/><rect x="106" y="102" width="26" height="18" rx="3" fill="#E8C274"/><rect x="138" y="102" width="26" height="18" rx="3" fill="#D9A441"/><rect x="170" y="102" width="26" height="18" rx="3" fill="#D9A441"/><rect x="202" y="102" width="26" height="18" rx="3" fill="#E8C274"/><rect x="234" y="102" width="26" height="18" rx="3" fill="#F0D9A6"/><rect x="266" y="102" width="26" height="18" rx="3" fill="#F0D9A6"/>
+            <rect x="42" y="126" width="26" height="18" rx="3" fill="#F0D9A6"/><rect x="74" y="126" width="26" height="18" rx="3" fill="#E8C274"/><rect x="106" y="126" width="26" height="18" rx="3" fill="#D9A441"/><rect x="138" y="126" width="26" height="18" rx="3" fill="#D9A441"/><rect x="170" y="126" width="26" height="18" rx="3" fill="#6E2C3E"/><rect x="202" y="126" width="26" height="18" rx="3" fill="#6E2C3E"/><rect x="234" y="126" width="26" height="18" rx="3" fill="#D9A441"/><rect x="266" y="126" width="26" height="18" rx="3" fill="#D9A441"/>
+            <rect x="42" y="150" width="26" height="18" rx="3" fill="#E8C274"/><rect x="74" y="150" width="26" height="18" rx="3" fill="#D9A441"/><rect x="106" y="150" width="26" height="18" rx="3" fill="#D9A441"/><rect x="138" y="150" width="26" height="18" rx="3" fill="#D9A441"/><rect x="170" y="150" width="26" height="18" rx="3" fill="#6E2C3E"/><rect x="202" y="150" width="26" height="18" rx="3" fill="#6E2C3E"/><rect x="234" y="150" width="26" height="18" rx="3" fill="#D9A441"/><rect x="266" y="150" width="26" height="18" rx="3" fill="#D9A441"/>
+            <rect x="42" y="174" width="26" height="18" rx="3" fill="#E8C274"/><rect x="74" y="174" width="26" height="18" rx="3" fill="#D9A441"/><rect x="106" y="174" width="26" height="18" rx="3" fill="#D9A441"/><rect x="138" y="174" width="26" height="18" rx="3" fill="#E8C274"/><rect x="170" y="174" width="26" height="18" rx="3" fill="#F0D9A6"/><rect x="202" y="174" width="26" height="18" rx="3" fill="#F0D9A6"/><rect x="234" y="174" width="26" height="18" rx="3" fill="#F7EFE4"/><rect x="266" y="174" width="26" height="18" rx="3" fill="#F7EFE4"/>
           </g>
-          <g font-family="Inter,sans-serif" font-size="10" fill="rgba(27,45,40,.6)">
+          <g font-family="Inter,sans-serif" font-size="10" fill="rgba(36,26,29,.6)">
             <text x="42" y="212">Quiet</text>
-            <rect x="76" y="204" width="14" height="9" rx="2" fill="#EFF4F2"/><rect x="92" y="204" width="14" height="9" rx="2" fill="#DCEAE5"/><rect x="108" y="204" width="14" height="9" rx="2" fill="#FFE9BD"/><rect x="124" y="204" width="14" height="9" rx="2" fill="#FFC48A"/><rect x="140" y="204" width="14" height="9" rx="2" fill="#FF8A3D"/><rect x="156" y="204" width="14" height="9" rx="2" fill="#F0603E"/>
+            <rect x="76" y="204" width="14" height="9" rx="2" fill="#F7EFE4"/><rect x="92" y="204" width="14" height="9" rx="2" fill="#F0D9A6"/><rect x="108" y="204" width="14" height="9" rx="2" fill="#E8C274"/><rect x="124" y="204" width="14" height="9" rx="2" fill="#D9A441"/><rect x="140" y="204" width="14" height="9" rx="2" fill="#D9A441"/><rect x="156" y="204" width="14" height="9" rx="2" fill="#6E2C3E"/>
             <text x="178" y="212">Busy</text>
           </g>
         </svg>
@@ -527,7 +528,7 @@
             <td>Tater Tots · <span class="mono">$8.00</span></td>
             <td><span class="conf">87%</span></td>
             <td>You are $1.00 under</td>
-            <td><span style="font-size:.76rem;color:var(--teal);font-weight:600;">✓ confirmed</span></td>
+            <td><span style="font-size:.76rem;color:var(--wine);font-weight:600;">✓ confirmed</span></td>
           </tr>
           <tr>
             <td>Chicken Sando · <span class="mono">$12.00</span></td>

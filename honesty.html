@@ -11,13 +11,20 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-  .manifesto-hero{background:var(--ink);color:var(--cream);padding:96px 0 88px;}
-  .manifesto-hero .kicker{color:var(--sun);}
+  .manifesto-hero{
+    background:linear-gradient(135deg,var(--wine-deep),var(--wine));color:var(--cream);
+    padding:96px 0 88px;position:relative;overflow:hidden;
+  }
+  .manifesto-hero::after{
+    content:"";position:absolute;pointer-events:none;top:-120px;right:-90px;
+    width:260px;height:260px;border-radius:50%;border:36px solid rgba(217,164,65,.14);
+  }
+  .manifesto-hero .kicker{color:var(--champagne);}
   .manifesto-hero h1{font-size:clamp(2rem,4vw,3rem);font-weight:900;letter-spacing:-.02em;line-height:1.1;max-width:16em;}
   .manifesto-hero .section-lede{color:var(--cream-70);margin-top:20px;}
   .example-card{
     background:#fff;border:1px solid var(--ink-12);border-radius:16px;padding:26px;
-    box-shadow:0 6px 24px rgba(27,45,40,.06);max-width:560px;margin-top:36px;
+    box-shadow:0 6px 24px rgba(36,26,29,.06);max-width:560px;margin-top:36px;
   }
 </style>
 </head>
@@ -48,20 +55,20 @@
 <section>
   <div class="wrap">
     <div class="promise-grid" style="margin-top:0;">
-      <div class="promise" style="border-top-color:var(--teal);">
-        <h3 style="color:var(--teal);">No invented figures</h3>
+      <div class="promise" style="border-top-color:var(--wine);">
+        <h3 style="color:var(--wine);">No invented figures</h3>
         <p style="color:var(--ink-60);">Every dollar amount traces back to your own transactions. If we cannot trace it, you do not see it. That includes our marketing: the example board on our homepage is labeled as a sample, and no invented figure is ever presented as a real result.</p>
       </div>
-      <div class="promise" style="border-top-color:var(--teal);">
-        <h3 style="color:var(--teal);">Pending means pending</h3>
+      <div class="promise" style="border-top-color:var(--wine);">
+        <h3 style="color:var(--wine);">Pending means pending</h3>
         <p style="color:var(--ink-60);">Thin data shows as "needs more data," never as a confident guess dressed up with decimals. Review scores hide until enough customers have actually said something. Cost figures wait for real cost data.</p>
       </div>
-      <div class="promise" style="border-top-color:var(--teal);">
-        <h3 style="color:var(--teal);">Verdicts, not victory laps</h3>
+      <div class="promise" style="border-top-color:var(--wine);">
+        <h3 style="color:var(--wine);">Verdicts, not victory laps</h3>
         <p style="color:var(--ink-60);">A finished trial can say exactly three things: worked, no effect, or backfired. When it backfires, the board says backfired. A recommendation engine that cannot admit a miss cannot be trusted on a hit.</p>
       </div>
-      <div class="promise" style="border-top-color:var(--teal);">
-        <h3 style="color:var(--teal);">No peeking</h3>
+      <div class="promise" style="border-top-color:var(--wine);">
+        <h3 style="color:var(--wine);">No peeking</h3>
         <p style="color:var(--ink-60);">While a trial is running, the dashboard shows no interim results. Checking mid trial inflates false positives, so Alfredo does not let anyone peek. Including us.</p>
       </div>
     </div>
@@ -73,10 +80,10 @@
         <span class="chip hollow">The rule, in the engine's own words</span>
       </div>
       <p style="font-size:.92rem;color:var(--ink-60);">When Alfredo suggested a cross promotion to one of our operators, it attached this label to its own idea:</p>
-      <p class="mono" style="font-size:.9rem;color:var(--teal);margin-top:12px;">"Very low confidence. Consider an A/B test."</p>
+      <p class="mono" style="font-size:.9rem;color:var(--wine);margin-top:12px;">"Very low confidence. Consider an A/B test."</p>
       <p style="font-size:.92rem;color:var(--ink-60);margin-top:12px;">An engine that flags its own weak ideas is the only kind whose strong ideas mean anything.</p>
       <p style="font-size:.92rem;color:var(--ink-60);margin-top:22px;">The same rule applies when the data itself is wrong. On day one with a real client's cost data, Alfredo flagged a 1,370 times data entry error.</p>
-      <p class="mono" style="font-size:.9rem;color:var(--teal);margin-top:12px;">"Flagged for review. Confirm or dismiss."</p>
+      <p class="mono" style="font-size:.9rem;color:var(--wine);margin-top:12px;">"Flagged for review. Confirm or dismiss."</p>
       <p style="font-size:.92rem;color:var(--ink-60);margin-top:12px;">It asked the operator instead of silently fixing it. Data that gets quietly corrected is data you can no longer trust.</p>
     </div>
   </div>
