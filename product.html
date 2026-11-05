@@ -54,6 +54,8 @@
 </head>
 <body>
 
+<a class="skip-link sr-only" href="#main">Skip to content</a>
+
 <nav aria-label="Main">
   <div class="nav-inner">
     <a class="wordmark" href="index.html">alfredo<span class="dot">·</span></a>
@@ -68,6 +70,8 @@
   </div>
 </nav>
 
+<main id="main" tabindex="-1">
+
 <section style="padding-top:64px;">
   <div class="wrap">
     <span class="kicker">Product</span>
@@ -76,14 +80,14 @@
   </div>
 </section>
 
-<div class="tabbar" role="tablist">
-  <button class="tab on" data-t="overview">Overview</button>
-  <button class="tab" data-t="board">The weekly board</button>
-  <button class="tab" data-t="menu">Menu and margins</button>
-  <button class="tab" data-t="intel">Guests and competition</button>
+<div class="tabbar" role="tablist" aria-label="Product sections">
+  <button class="tab on" id="tab-overview" role="tab" data-t="overview" aria-controls="p-overview" aria-selected="true" tabindex="0">Overview</button>
+  <button class="tab" id="tab-board" role="tab" data-t="board" aria-controls="p-board" aria-selected="false" tabindex="-1">The weekly board</button>
+  <button class="tab" id="tab-menu" role="tab" data-t="menu" aria-controls="p-menu" aria-selected="false" tabindex="-1">Menu and margins</button>
+  <button class="tab" id="tab-intel" role="tab" data-t="intel" aria-controls="p-intel" aria-selected="false" tabindex="-1">Guests and competition</button>
 </div>
 
-<div class="panel" id="p-overview">
+<div class="panel" id="p-overview" role="tabpanel" aria-labelledby="tab-overview" tabindex="0">
 
 <section class="pillars" style="padding-top:0;">
   <div class="wrap">
@@ -142,7 +146,7 @@
 
 </div>
 
-<div class="panel" id="p-board">
+<div class="panel" id="p-board" role="tabpanel" aria-labelledby="tab-board" tabindex="0">
 
 <section id="board" style="padding-top:64px;">
   <div class="wrap">
@@ -254,7 +258,7 @@
 
 </div>
 
-<div class="panel" id="p-menu">
+<div class="panel" id="p-menu" role="tabpanel" aria-labelledby="tab-menu" tabindex="0">
 
 <section id="menulab">
   <div class="wrap">
@@ -344,7 +348,7 @@
 
 </div>
 
-<div class="panel" id="p-intel">
+<div class="panel" id="p-intel" role="tabpanel" aria-labelledby="tab-intel" tabindex="0">
 
 <section id="regulars">
   <div class="wrap intel-inner">
@@ -511,6 +515,7 @@
         <span class="sample-tag">sample data</span>
       </div>
       <p style="font-size:.85rem;color:var(--ink-60);">Upload a photo of a competitor menu. Alfredo reads it, matches items against your own, and shows its confidence on every pairing. You confirm or dismiss each one before anything else happens.</p>
+      <div class="table-scroll">
       <table class="match-table">
         <thead>
           <tr><th>Their item</th><th>Your item</th><th>Match</th><th>Gap</th><th></th></tr>
@@ -539,6 +544,7 @@
           </tr>
         </tbody>
       </table>
+      </div>
       <div class="radius-foot">"Try this price" only appears on matches you have confirmed, and only when the competitor price came from a published menu, never an estimate.</div>
     </div>
 
@@ -578,6 +584,8 @@
 
 </div>
 
+</main>
+
 <footer>
   <div class="foot-inner">
     <a class="wordmark" href="index.html" style="font-size:1.2rem;">alfredo<span class="dot">·</span></a>
@@ -608,6 +616,7 @@
       var on = t.getAttribute('data-t') === name;
       t.classList.toggle('on', on);
       t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.setAttribute('tabindex', on ? '0' : '-1');
     });
     if (doScroll) { bar.scrollIntoView({ block: 'start' }); }
     return name;
@@ -621,6 +630,20 @@
 
   tabs.forEach(function (t) {
     t.addEventListener('click', function () { go(t.getAttribute('data-t')); });
+  });
+
+  // manual activation: arrows move focus only, Enter/Space activate the focused tab
+  bar.addEventListener('keydown', function (e) {
+    var i = tabs.indexOf(document.activeElement);
+    if (i < 0) { return; }
+    var n = null;
+    if (e.key === 'ArrowRight') { n = (i + 1) % tabs.length; }
+    else if (e.key === 'ArrowLeft') { n = (i - 1 + tabs.length) % tabs.length; }
+    else if (e.key === 'Home') { n = 0; }
+    else if (e.key === 'End') { n = tabs.length - 1; }
+    if (n === null) { return; }
+    e.preventDefault();
+    tabs[n].focus();
   });
   [].slice.call(document.querySelectorAll('[data-go]')).forEach(function (b) {
     b.addEventListener('click', function () { go(b.getAttribute('data-go')); });

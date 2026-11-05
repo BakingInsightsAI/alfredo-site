@@ -289,7 +289,7 @@
     font-family:'Nunito',sans-serif;font-weight:900;font-size:1.7rem;letter-spacing:-.02em;
     margin-bottom:8px;
   }
-  .stat-card .big .mango-txt{color:var(--gold);}
+  .stat-card .big .mango-txt{color:var(--wine);}
   .stat-card p{font-size:.88rem;color:var(--ink-60);}
 
   /* ---------- CTA ---------- */
@@ -422,3 +422,19 @@
 .cta-box .btn:hover,
 .manifesto-hero .btn:hover,
 .honesty .btn:hover{background:var(--champagne);color:var(--ink);}
+
+/* ---------- v2.32 a11y utilities ---------- */
+.sr-only{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
+}
+.skip-link:focus{
+  position:fixed;top:12px;left:12px;z-index:200;
+  width:auto;height:auto;padding:10px 18px;margin:0;
+  overflow:visible;clip:auto;white-space:normal;
+  background:var(--cream);color:var(--ink);
+  font-family:'Nunito',sans-serif;font-weight:800;font-size:.9rem;
+  border-radius:8px;box-shadow:0 4px 18px rgba(36,26,29,.22);text-decoration:none;
+}
+/* wide tables stay inside the viewport on small screens */
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
