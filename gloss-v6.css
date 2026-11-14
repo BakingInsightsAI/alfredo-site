@@ -463,6 +463,14 @@ section.paper:has(.tension-grid) .tension-fig img { aspect-ratio: 4 / 4.9; }
   .v6-action-card footer { grid-column: 2 / -1; display: flex; gap: 16px; }
 }
 @media (max-width: 1000px) {
+  /* The hero masthead stops overlaying the image at this breakpoint.
+     Keep the mobile menu against a solid backdrop for contrast. */
+  body.hero-nav .nav {
+    position: sticky;
+    margin-bottom: 0;
+    background: var(--ink);
+    border-bottom-color: rgba(250,248,244,.13);
+  }
   .hero { min-height: 0; display: block; padding: 0; background: var(--ink); }
   .hero-photo { position: relative; inset: auto; height: clamp(240px, 35vw, 330px); }
   .hero-photo img { object-position: 67% 48%; }
