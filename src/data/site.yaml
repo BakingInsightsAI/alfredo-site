@@ -1,0 +1,95 @@
+# Site wide configuration. Copy lives here so layout edits never touch wording.
+
+staging: false         # live: no banner, no noindex, robots.txt allows indexing
+form_subject: "Demo request from bakinginsightsai.com"
+web3forms_key: "6ce52bfe-d286-44ff-992c-bb7565c31fb6"
+app_url: "https://app.bakinginsightsai.com"
+
+footer_line: "\u00a9 2026 Alfredo, a BakingInsights AI product. Patent pending. We do not inflate numbers."
+
+# The images are generated, and saying so on every page is a condition of
+# using them. The handoff's own wording used a word this site does not use,
+# so this is the reworded line.
+image_disclosure: "Images are AI generated for illustration. No person or business shown is real."
+
+contact:
+  email: "contact@bakinginsightsai.com"
+  instagram: "@alfredobybia"
+  instagram_href: "https://www.instagram.com/alfredobybia/"
+  facebook: "@alfredobybia"
+  facebook_href: "https://www.facebook.com/alfredobybia"
+
+# The order is the order of the story: what it does, why you can trust it,
+# who we are, what it costs.
+nav:
+  - { label: "What it does", href: "product.html" }
+  - { label: "Why trust it", href: "honesty.html" }
+  - { label: "About us",     href: "pilot.html" }
+  - { label: "Pricing",      href: "pricing.html" }
+
+cta:
+  label: "Request a demo"
+  href: "pilot.html#pilot"
+
+# Every page but the last hands the reader on to the next one. Pricing has
+# no next: its last element is the demo call to action.
+pages:
+  - key: index
+    template: index.html
+    output: index.html
+    legacy: false
+    hero: true
+    title: "Alfredo, every business has a story"
+    description: "Alfredo turns your sales into clear, practical changes worth trying. You choose what to do. Alfredo helps you see what actually worked."
+
+  - key: product
+    template: product.html
+    output: product.html
+    legacy: false
+    title: "Alfredo, what it does"
+    description: "Three questions every owner asks: what to change this week, whether the menu is making money, and who is coming in. Alfredo answers them every week."
+    next: { label: "Why you can trust the numbers", href: "honesty.html" }
+
+  - key: honesty
+    template: honesty.html
+    output: honesty.html
+    legacy: false
+    title: "Alfredo, why you can trust the numbers"
+    description: "We do not make up numbers. If the data is not there, the number is not there either. Here is the whole promise, in public."
+    next: { label: "Who is behind Alfredo", href: "pilot.html" }
+
+  - key: pricing
+    template: pricing.html
+    output: pricing.html
+    legacy: false
+    title: "Alfredo, pricing"
+    description: "Three plans: Counter at $99 a month for one location, House at $199 for up to three, Group at $299 for up to ten. One price for your whole business, not per location and not per user."
+
+  - key: pilot
+    template: pilot.html
+    output: pilot.html
+    legacy: false
+    title: "Alfredo, about us"
+    description: "Built by someone who knows numbers, with someone who runs restaurants. How we work with you, and where we are today."
+    next: { label: "What it costs", href: "pricing.html" }
+
+# The three steps between a visitor and a working install. They are a real
+# sequence, so they are rendered as an ordered list rather than as three
+# cards that happen to sit left to right. Shown above the form on about us
+# and above the closing band on pricing.
+getting_started:
+  heading: "Getting started"
+  steps:
+    - name: "Request a demo."
+      body: "Tell us a little about your place. We reply within one business day."
+    - name: "A 30 minute call."
+      body: "We show you Alfredo and what you would get from it."
+    - name: "Up and running in about two weeks."
+      body: "If you want to go ahead, we plan the setup together and connect your POS."
+
+# Sentences printed in more than one place. A home tile and an overview
+# card say the same thing word for word, so they read one key rather than
+# two that have to be kept in step by hand.
+shared:
+  menu_line: "See what you really make on every plate, extras included, and which add ons to suggest."
+  guests_line: "Know your regulars and what they spend. See what nearby places charge and what guests say."

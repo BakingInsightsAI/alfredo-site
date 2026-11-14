@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{%- set h = pages.honesty %}
+
+{% block content %}
+{#- A manifesto page. The promises are numbered statements on rules, not
+    four icon cards, because the point of the page is the plain claim. #}
+<section class="pagehead darkest">
+  <div class="wrap grid12 pagehead-grid">
+    <div class="pagehead-copy">
+      <p class="eyebrow">{{ h.eyebrow }}</p>
+      <h1 class="display">{{ h.heading }}</h1>
+      {%- for line in h.lede %}
+      <p class="lead"{% if not loop.first %} style="margin-top:18px"{% endif %}>{{ line }}</p>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section paper">
+  <div class="wrap">
+    <div class="proof-head reveal">
+      <h2 class="h2">{{ h.promises_heading }}</h2>
+    </div>
+    <ul class="manifesto">
+      {%- for p in h.promises %}
+      <li>
+        <p class="m-n" aria-hidden="true">{{ "%02d"|format(loop.index) }}</p>
+        <div>
+          <h3>{{ p.name }}</h3>
+          <p>{{ p.body }}</p>
+        </div>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="section sand">
+  <div class="wrap grid12 ed">
+    <div class="ed-copy">
+      <p class="eyebrow">{{ h.bridge_heading }}</p>
+    </div>
+    <div class="ed-main">
+      <p class="pull reveal">{{ h.bridge }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="section paper-light">
+  <div class="wrap">
+    <div class="proof-head reveal">
+      <h2 class="h2">{{ h.quotes_heading }}</h2>
+    </div>
+    <div class="practice">
+      {%- for q in h.quotes %}
+      <div>
+        <div>
+          <p>{{ q.intro }}</p>
+          {%- if q.quote %}
+          <p class="p-quote">{{ q.quote }}</p>
+          {%- endif %}
+        </div>
+        <p class="p-close">{{ q.close }}</p>
+      </div>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

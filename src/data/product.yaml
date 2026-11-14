@@ -1,0 +1,220 @@
+# Product page copy, in the words an owner would use.
+
+tabs:
+  - { key: overview, label: "Overview" }
+  - { key: board,    label: "This week" }
+  - { key: menu,     label: "Your menu" }
+  - { key: intel,    label: "Your guests and neighbors" }
+
+questions:
+  - key: board
+    q: "What should I change this week, and did it work?"
+    a: "A short list of small changes. Try one and learn if it worked, did nothing, or backfired."
+    cta: "See this week"
+  # the two below are shared with the home tiles, see site.yaml
+  - key: menu
+    q: "Is my menu making me money?"
+    shared: "menu_line"
+    cta: "See your menu"
+  - key: intel
+    q: "Who is coming in, and what is happening down the street?"
+    shared: "guests_line"
+    cta: "See your guests and neighbors"
+
+chat_chips:
+  - q: "How am I doing this week?"
+    a: "Revenue is up 4.2% week over week, most of it from Friday night. Orders are flat and average check is up $1.10. One thing to watch: Monday is still your softest day by a wide margin."
+  - q: "What are my best sellers?"
+    a: "Wings lead on volume, but your best seller is not your best earner: your highest margin mover is a mid shelf pour. Want the list sorted by profit instead of popularity?"
+  - q: "What do you recommend?"
+    a: "Three things on this week's list: a small price cut on your mozzarella sticks, a pairing nudge for loaded nachos with your house IPA, and one competitor pattern worth reading. Want to start with the one worth the most?"
+
+board_types:
+  - name: "Prices"
+    body: "Which items could sell more at a slightly lower price."
+  - name: "Pairings"
+    body: "What your guests already like together, and what to suggest with it."
+  - name: "Menu placement"
+    body: "What to show off on the menu and what to quietly move down."
+  - name: "How you run the floor"
+    body: "Happy hour times, busy and slow hours, and how long tables stay."
+
+# The House Lager walkthrough, printed once on this page and quoted on the
+# home page as a finished test. One figure, the same in both places. Every
+# number is invented for the illustration and the card says so, but it has
+# to add up, and it is a price coming down, never going up:
+#   before   520 pints a week at $7.00 = $3,640
+#   after    598 pints a week at $6.50 = $3,887
+#   so       $3,887 - $3,640 = $247 more a week, and 598 - 520 = 78 more pints
+#   a year   $247 x 52 = $12,844
+# Alfredo's own figures are stated exactly: no "about" in front of a number
+# it reports. The takings are what the bar took, never what it made.
+measured:
+  heading: "We took fifty cents off the House Lager."
+  detail: "From $7.00 to $6.50. 520 pints a week became 598, and takings went from $3,640 to $3,887"
+  after: "After what you would have made anyway."
+  lead: "Four weeks later the bar took"
+  amount: "$247"
+  tail: "more a week. That is $12,844 a year."
+
+# One plate, broken down. Every figure here is invented for the illustration,
+# which is why the card carries a sample label. The sums are consistent:
+# price minus cost is what you make, on each line and on the total.
+plate:
+  dish: "House Burger"
+  price: "$11.00"
+  cost: "$4.10"
+  make: "$6.90"
+  addons:
+    - { name: "Add bacon", price: "$2.00", cost: "$0.70", make: "$1.30" }
+    - { name: "Add fries", price: "$3.50", cost: "$1.15", make: "$2.35" }
+  total_label: "Plate with both"
+  total_price: "$16.50"
+  total_cost: "$5.95"
+  total_make: "$10.55"
+  note: "The dish is not the whole story. The two add ons are 35 percent of what this plate makes."
+  aria: "Sample plate breakdown. House Burger sells for 11 dollars, costs 4 dollars 10 to make, and makes 6 dollars 90. Add bacon sells for 2 dollars, costs 70 cents, makes 1 dollar 30. Add fries sells for 3 dollars 50, costs 1 dollar 15, makes 2 dollars 35. The plate with both sells for 16 dollars 50, costs 5 dollars 95, and makes 10 dollars 55."
+
+# The first card carries the cost anchor, because a link to #cost is a link
+# to the breakdown of what a dish costs you.
+menu_cards:
+  - anchor: "cost"
+    name: "Where the money goes"
+    body: "Pick any dish and see what it really costs you, ingredient by ingredient."
+  - name: "What to keep an eye on"
+    body: "See which ingredients would hurt most if their price jumped."
+  - name: "Costs that crept up"
+    body: "Cheese went up, your menu price did not. Alfredo shows what that costs you each week."
+  - name: "Mistakes caught early"
+    body: "On day one with a real client, Alfredo caught a cost off by 1,370 times and asked first."
+  - name: "Try it small first"
+    body: "Test a new price or a new spot on the menu with one item before you change the whole menu."
+
+guest_groups:
+  - { name: "The Friday night crowd", guests: "124 guests", check: "$47 average check", visits: "3.1 visits", body: "Weekend evenings, bigger tables, mostly drinks." }
+  - { name: "Lunch break locals",     guests: "96 guests",  check: "$22 average check", visits: "5.8 visits", body: "Weekday lunches, in and out fast, back often." }
+  - { name: "Slow sippers",           guests: "58 guests",  check: "$29 average check", visits: "6.4 visits", body: "Stay a long while, drinks only. A snack suggestion could go a long way." }
+  - { name: "Big table hosts",        guests: "34 guests",  check: "$118 average check", visits: "2.2 visits", body: "They bring the group. Fewer visits, the biggest checks in the house." }
+
+intel_stats:
+  - { n: "36",      label: "places tracked in your area" }
+  - { n: "8 of 36", label: "open past midnight: your late night edge" }
+  - { n: "+1.1",    label: "your service score against the area average" }
+  - { n: "1 click", label: "from any nearby place to their whole menu" }
+
+radar:
+  cx: 100
+  cy: 100
+  r: 78
+  # score is what the axis label says, out of five, and it is you times
+  # five exactly: 0.86 is 4.3, 0.82 is 4.1, 0.68 is 3.4, 0.74 is 3.7. The
+  # label and the shape have to agree, so if one moves the other moves
+  # with it. Ambiance has no score because it has no reviews to make one.
+  axes:
+    - { name: "Food", score: 4.3, you: 0.86, market: 0.7, ux: 0.0, uy: -1.0 }
+    - { name: "Service", score: 4.1, you: 0.82, market: 0.64, ux: 0.9511, uy: -0.309 }
+    - { name: "Value", score: 3.4, you: 0.68, market: 0.72, ux: 0.5878, uy: 0.809 }
+    - { name: "Speed", score: 3.7, you: 0.74, market: 0.66, ux: -0.5878, uy: 0.809 }
+    - { name: "Ambiance", you: 0.0, market: 0.0, ux: -0.9511, uy: -0.309, faded: true, note: "not enough reviews" }
+
+
+also_included: "Also included: what reviews in your area keep saying, a map of nearby competitors, who lives and works around you, whether nearby bars send you late night guests, what longer hours could bring in, and where your prices sit in the area."
+
+# ---------------------------------------------------------------- v4 ----
+# The page level copy for the rebuilt product page. The capability names in
+# the brief are internal, so none of them is a heading here: a reader sees
+# what the thing does, in the words they would use for it themselves.
+v4:
+  eyebrow: "What it does"
+  heading_a: "One short list, "
+  heading_em: "every Monday."
+  lede: "Alfredo reads the sales you already ring through your existing POS system, and turns the week into three to five changes worth trying. You choose. It reports back."
+  board_eyebrow: "The list itself"
+  board_heading: "What a suggestion tells you before you decide."
+  board_lede: "Every one of them comes with the same six things, so you can judge it in a few seconds and get back to the floor."
+  anatomy:
+    - name: "What it is"
+      body: "The change itself, in one line you could read out to the floor."
+    - name: "Why it came up"
+      body: "What in your own sales put it on the list this week."
+    - name: "How much work"
+      body: "Low, medium or high, so a busy week gets the easy ones."
+    - name: "What it risks"
+      body: "What could go the other way, said plainly before you try it."
+    - name: "How to do it"
+      body: "The steps, and who needs to know."
+    - name: "When to check back"
+      body: "The date Alfredo comes back with the answer."
+  kinds_heading: "Five kinds of changes, and one on the way."
+  kinds_lede: "Price is one of them, not the whole of it."
+  inventory:
+    name: "Inventory"
+    tag: "Coming soon"
+    body: "Know what you have on hand. We are building inventory tracking now."
+  menu_eyebrow: "Your menu"
+  menu_heading: "What every plate really earns."
+  menu_lede: "Once the extras are counted, the plate that sells most is often not the plate that earns most. Alfredo separates the two, and flags a cost that has crept up before it eats the week."
+  menu_points:
+    - "What each plate makes once the extras are counted."
+    - "Items selling below what they cost to make."
+    - "The one ingredient squeezing a plate."
+    - "A real cost problem told apart from a false alarm."
+    - "Which items to show off, keep, or rethink."
+  intel_eyebrow: "Your guests and the street outside"
+  intel_heading: "Who comes in, and what is happening nearby."
+  intel_lede: "New faces, the regulars, and the ones who have gone quiet. Then the places down the street: what they charge, when they open, and what their guests keep saying."
+  intel_points:
+    - "New, returning, and quiet regulars, and who is worth winning back."
+    - "What nearby places charge, set beside your own prices."
+    - "Who is open when you are closed."
+    - "What reviews in your area keep saying."
+    - "Your sales by day and time of day, and your locations side by side on the Group plan."
+    - "House pours against guest pours, and what to put beside them."
+  chat_eyebrow: "Ask it anything"
+  chat_heading: "Questions in plain words, answered from your own numbers."
+  chat_lede: "No report to build and no chart to read. Ask the way you would ask a manager, and if Alfredo does not know, it says so."
+
+# The weekly list itself, which is what this page is for. Five suggestions
+# as they would land on a Monday, each carrying the six things the section
+# beside it promises. None of these appears on the home page: the home page
+# shows the range, this is the thing itself.
+weeklist:
+  title: "Monday, the 6th"
+  sub: "Five things worth trying this week"
+  label: "Illustrative example"
+  entries:
+    - kind: "Pairing"
+      name: "Offer the sourdough board with the cheese plate"
+      why: "Two in three cheese plates already leave the kitchen with bread beside them."
+      effort: "Low"
+      risk: "Low"
+      how: "Tell the floor on Thursday and add one line to the specials card."
+      back: "Three weeks"
+    - kind: "Menu placement"
+      name: "Move the lamb ragu into the top third of the mains"
+      why: "It earns more per plate than any other main and sits second from the bottom."
+      effort: "Low"
+      risk: "Low"
+      how: "Reprint the mains before the weekend."
+      back: "Four weeks"
+    - kind: "Costs"
+      name: "Look again at the mushroom tart"
+      why: "What you pay for the mushrooms went up twice, and the tart is now selling for less than it costs to make."
+      effort: "Low"
+      risk: "Low"
+      how: "Confirm the new costs or dismiss the flag."
+      back: "This week"
+    - kind: "Prices"
+      name: "Try fifty cents off the flatbread after nine"
+      why: "Late orders drop off sharply, and the flatbread costs little to make."
+      effort: "Low"
+      risk: "Low"
+      how: "Fifty cents off from nine until close, nothing else changes."
+      back: "Four weeks"
+    - kind: "Neighborhood"
+      name: "Hold the Thursday quiz an hour later"
+      why: "The pub two streets over starts theirs at eight and takes your early crowd with it."
+      effort: "Medium"
+      risk: "Medium"
+      how: "Move the start, and tell the regulars the week before."
+      back: "Four weeks"

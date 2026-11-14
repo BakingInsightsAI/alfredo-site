@@ -1,0 +1,41 @@
+# About us page copy.
+
+# Who built it is the page heading now: the old one described a platform,
+# which is not what anyone comes to this page to read about.
+heading: "Built by someone who knows numbers, with someone who runs restaurants."
+built_heading: "Who is behind Alfredo"
+hero_line: "Running a place like yours is complicated. Alfredo takes all of that and turns it into a few simple things to try each week."
+built:
+  - name: "The founder"
+    body: "A decade advising Fortune 100 companies on how people buy. You work with him directly."
+  - name: "The restaurant owner"
+    body: "A multi location owner who helped design Alfredo from week one. Every feature began as a question about his own places."
+how_heading: "How we work with you"
+how:
+  - name: "We start by listening"
+    body: "We learn your place first. Then you connect your POS. No new hardware, no staff training."
+  - name: "Your reviews count too"
+    body: "What guests say about you, and about the places nearby, helps shape your weekly list."
+  - name: "Made to fit you"
+    body: "A brewery sees its taproom, a bar sees its bar program. Early partners help decide what we build next."
+# the one line worth keeping from the old opening: who this is for
+how_close: "Restaurants, bars, cafes, bakeries, food trucks: if you ring sales through a POS, get in touch and we will tell you honestly where the fit stands today."
+
+where_eyebrow: "Where we are"
+where_heading: "Early, and honest about it."
+# three plain statements, which is why they carry no titles
+where:
+  - "Tested with a brewpub and live across a 14 location restaurant chain."
+  - "Patent pending with the USPTO."
+  - "Now taking on a small number of partners. Early partners get direct access to the founder."
+
+form_heading: "Request a demo"
+form_lede: "Tell us a little about your place and we will reply within one business day."
+# the price in this line is read from the pricing data
+form_reassure_lead: "Plans from"
+# The location choices match the plans, so the answer Sid reads in the
+# email is the band the business falls into. The submitted value is the
+# label itself: one string, so the two cannot drift.
+form_locations:
+  legend: "Locations"
+  choices: ["1", "2 to 3", "4 to 10", "More than 10"]

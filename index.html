@@ -1,192 +1,350 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>alfredo · weekly recommendations from your own POS data</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alfredo, every business has a story</title>
+<meta name="description" content="Alfredo turns your sales into clear, practical changes worth trying. You choose what to do. Alfredo helps you see what actually worked.">
+<meta name="theme-color" content="#191715">
 <link rel="icon" type="image/png" href="favicon.png">
-<meta property="og:title" content="alfredo · weekly recommendations from your own POS data">
-<meta property="og:description" content="Weekly, tested, measured recommendations for independent food and beverage businesses. We do not inflate numbers. If the data is not there, the number is not there either.">
-<meta property="og:type" content="website">
-<meta name="description" content="Alfredo reads your business's POS data and hands you a short weekly list of recommendations worth testing. We do not inflate numbers. If the data is not there, the number is not there either.">
-<link rel="stylesheet" href="styles.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/instrumentserif-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/dmsans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="assets/hero-restaurant-1280.webp" type="image/webp"
+      imagesrcset="assets/hero-restaurant-640.webp 640w, assets/hero-restaurant-960.webp 960w, assets/hero-restaurant-1280.webp 1280w, assets/hero-restaurant-1672.webp 1672w"
+      imagesizes="100vw" fetchpriority="high">
+
+<link rel="stylesheet" href="alfredo.css">
+<link rel="stylesheet" href="gloss-v6.css">
+<script>document.documentElement.className += ' js';</script>
 </head>
-<body>
+<body class="hero-nav">
+<a class="skip" href="#main">Skip to content</a>
 
-<a class="skip-link sr-only" href="#main">Skip to content</a>
-
-<nav aria-label="Main">
-  <div class="nav-inner">
-    <a class="wordmark" href="index.html">alfredo<span class="dot">·</span></a>
-    <ul class="nav-links">
-      <li><a href="product.html">Product</a></li>
-      <li><a href="honesty.html">Our numbers rule</a></li>
-      <li><a href="pricing.html">Pricing</a></li>
-      <li><a href="pilot.html">Work with us</a></li>
-      <li><a href="https://app.bakinginsightsai.com">Log in</a></li>
-      <li><a class="btn" href="pilot.html#pilot">Request a demo</a></li>
-    </ul>
-  </div>
-</nav>
-
-<main id="main" tabindex="-1">
-
-<header class="hero">
-  <svg class="scatter" width="100%" height="100%" viewBox="0 0 1200 640" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-    <g opacity="0.5">
-      <circle cx="60" cy="600" r="5" fill="#D9A441" opacity=".55"/><circle cx="130" cy="560" r="4" fill="#6E2C3E" opacity=".35"/><circle cx="95" cy="500" r="3" fill="#F0D9A6" opacity=".6"/><circle cx="180" cy="470" r="5" fill="#D9A441" opacity=".4"/><circle cx="240" cy="420" r="3" fill="#6E2C3E" opacity=".3"/><circle cx="150" cy="380" r="2.5" fill="#D9A441" opacity=".45"/><circle cx="290" cy="340" r="4" fill="#F0D9A6" opacity=".5"/><circle cx="230" cy="280" r="2.5" fill="#6E2C3E" opacity=".3"/><circle cx="330" cy="240" r="3" fill="#D9A441" opacity=".38"/><circle cx="280" cy="180" r="2" fill="#F0D9A6" opacity=".45"/><circle cx="370" cy="140" r="2.5" fill="#6E2C3E" opacity=".28"/><circle cx="340" cy="80" r="2" fill="#D9A441" opacity=".3"/>
-    </g>
-  </svg>
-
-  <div class="hero-inner">
-    <div>
-      <span class="eyebrow">For independent food and beverage businesses · patent pending</span>
-      <h1>Meet <em>Alfredo</em>: the in house consultant your business <span class="stroke">never had<svg viewBox="0 0 320 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 16 C 80 6, 240 24, 316 10"/></svg></span>.</h1>
-      <p class="lede">Every week Alfredo reads your own transaction data and hands you a short list of small changes worth trying, the way a good consultant would, except it is there every week and it measures what actually happened. We do not inflate numbers. We do not estimate around gaps. If the data is not there, the number is not there either.</p>
-      <p class="lede" style="font-size:.98rem;margin-top:-16px;">Our philosophy is simple: no drastic changes. You know your business better than any outsider ever will. Alfredo's job is to hand you the information for small, low cost changes, help you try them, and stack incremental gains that hold up over time.</p>
-      <div class="hero-ctas">
-        <a class="btn mango" href="pilot.html#pilot">Request a demo</a>
-        <a class="btn ghost" href="product.html">See how it works</a>
-      </div>
-      <p class="hero-note">Works with your existing POS system. No new hardware, nothing to install. Tested with a brewpub and currently live across a 14 location restaurant chain.</p>
-    </div>
-
-    <div>
-      <div class="board" aria-label="Sample recommendation board with illustrative numbers">
-        <div class="card">
-          <div class="card-top"><span class="chip teal">1 · Pricing</span><span class="sample-tag">sample</span></div>
-          <h3>Raise Mozzarella Sticks from $6.99 to $7.49</h3>
-          <p>They move about 290 orders a week and demand barely flinches at 50 cents. The engine estimates the bump costs about 2% of volume and still comes out well ahead on net revenue.</p>
-          <div class="chiprow">
-            <span class="statchip">Volume 290/wk</span>
-            <span class="statchip">If holds +$98.41/wk</span>
-            <span class="statchip">Cushion 7.2%</span>
-          </div>
-          <p class="softrow">Low risk · reversible in under 15 minutes · measured over 4 weeks</p>
-        </div>
-        <div class="card">
-          <div class="card-top"><span class="chip sun">2 · Positioning</span><span class="sample-tag">sample</span></div>
-          <h3>Cross promote Loaded Nachos with House IPA</h3>
-          <p>The pairing runs at 3.1x lift across 87 shared baskets, and about 340 beverage only tables settle every week. A server nudge could turn some of those into food attached checks.</p>
-          <div class="chiprow">
-            <span class="statchip">Lift 3.1x</span>
-            <span class="statchip">Shared baskets 87</span>
-            <span class="statchip amber">⚠ see assumptions</span>
-          </div>
-          <p class="softrow">Flagged unproven by the engine itself until a trial says otherwise. That flag is Alfredo working.</p>
-        </div>
-        <div class="card">
-          <div class="card-top"><span class="chip mango">3 · Competitive signal</span><span class="sample-tag">sample</span></div>
-          <h3>The Copper Pint is getting famous for its wings</h3>
-          <p>31 of their last 44 reviews mention the wings, and the pattern is building. Labeled as an observation of what their customers are saying, not a recommendation.</p>
-          <div class="chiprow">
-            <span class="statchip">Signal: Building</span>
-            <span class="statchip">31 of 44 reviews</span>
-          </div>
-          <p class="softrow">Alfredo watches what your competitors' customers keep saying and puts the pattern on your weekly board, before it costs you regulars.</p>
-        </div>
-      </div>
-      <p class="board-caption"><strong>Sample board.</strong> Illustrative items and numbers, built the same way the engine builds real ones. Your board comes from your own data, and real recommendations vary. <a class="more" href="product.html#measured">See what a finished trial looks like →</a></p>
-    </div>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="wordmark" href="index.html">
+      <img src="alfredo_logo_cream.svg" alt="Alfredo" width="3909" height="1484" decoding="async">
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Main">
+      <ul>
+        <li><a href="product.html">What it does</a></li>
+        <li><a href="honesty.html">Why trust it</a></li>
+        <li><a href="pilot.html">About us</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="https://app.bakinginsightsai.com">Log in</a></li>
+      </ul>
+    </nav>
+    <a class="btn" href="pilot.html#pilot">Request a demo</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navLinks">
+      <span class="sr-only">Menu</span>
+      <b aria-hidden="true"></b><b aria-hidden="true"></b><b aria-hidden="true"></b>
+    </button>
   </div>
 </header>
 
-<section class="pillars">
+<main id="main" tabindex="-1">
+
+<section class="hero">
+  <div class="hero-photo">
+    <picture>
+      <source type="image/webp" sizes="100vw"
+              srcset="assets/hero-restaurant-640.webp 640w, assets/hero-restaurant-960.webp 960w, assets/hero-restaurant-1280.webp 1280w, assets/hero-restaurant-1672.webp 1672w">
+      <img src="assets/hero-restaurant-1280.jpg" alt="A dining room at the end of service, lit by low pendant lights."
+           width="1672" height="941" fetchpriority="high" decoding="async">
+    </picture>
+  </div>
+  <div class="hero-veil" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow">Alfredo for hospitality</p>
+      <h1 class="display">Every business<br>has a story.</h1>
+      <p class="hero-sub">Your numbers know what comes next.</p>
+      <p class="hero-body">Alfredo turns your sales into clear, practical changes worth trying. You choose what to do. Alfredo helps you see what actually worked.</p>
+      <div class="actions">
+        <a class="btn" href="#meet">See Alfredo in action</a>
+        <a class="btn btn-ghost" href="pilot.html#pilot">Request a demo</a>
+      </div>
+      <p class="hero-note">For restaurants, bars, breweries, cafés and bakeries.</p>
+    </div>
+  </div>
+  <p class="hero-chapter" aria-hidden="true">01 / The story</p>
+</section>
+<section class="section paper">
+  <div class="wrap grid12 tension-grid">
+    <div class="tension-copy">
+      <div class="reveal">
+        <p class="eyebrow">02 / The reality</p>
+        <h2 class="h2">Good instincts deserve better information.</h2>
+      </div>
+      <p class="body">You know your guests. You know your team. You know when a Tuesday feels different. But between service, staffing and everything else, there is rarely time to dig through the numbers and find out why.</p>
+      <hr class="rule">
+      <p class="tension-close">That is where Alfredo comes in.</p>
+      <div class="tension-space" aria-hidden="true"></div>
+    </div>
+    <figure class="tension-fig">
+      <picture>
+        <source type="image/webp" sizes="(max-width: 900px) 100vw, 36vw"
+                srcset="assets/restaurant-kitchen-480.webp 480w, assets/restaurant-kitchen-640.webp 640w, assets/restaurant-kitchen-960.webp 960w">
+        <img src="assets/restaurant-kitchen-640.jpg" alt="A cook finishing a dish on a kitchen pass."
+             width="640" height="896" loading="lazy" decoding="async">
+      </picture>
+      <figcaption class="tension-cap">The decisions never stop when service starts.</figcaption>
+    </figure>
+  </div>
+</section>
+<section class="section dark" id="meet">
   <div class="wrap">
-    <span class="kicker">What Alfredo does</span>
-    <h2 class="section-title">Every analytics tool shows you what happened. Alfredo tells you what to do about it.</h2>
-    <p class="section-lede">Not a dashboard. A weekly to do list that grades itself. Alfredo runs a loop: it reads your POS, ranks its recommendations, you pick one, it measures the outcome, and the result trains next week's board. Four kinds of recommendations, one ranked list.</p>
-    <div class="pillar-grid">
-      <div class="pillar">
-        <div class="pillar-dot" style="background:var(--wine)"></div>
-        <h3>The weekly board</h3>
-        <p>Recommendations across pricing, promotions, positioning, and operations, ranked by what they are worth, each with its evidence attached. <a class="more" href="product.html#board">How the loop works →</a></p>
+    <div class="reveal-head reveal">
+      <p class="eyebrow">03 / Meet Alfredo</p>
+      <h2 class="h2">Clarity, before the next service.</h2>
+      <p class="lead">Every week, Alfredo finds patterns in your sales and turns them into decisions you can actually act on.</p>
+    </div>
+
+    <div class="pui-shell reveal">
+      <div class="pui">
+        <div class="pui-rail" aria-hidden="true">
+          <span class="pui-mark">a</span>
+          <ul><li></li><li></li><li></li><li></li><li></li></ul>
+        </div>
+        <div>
+          <div class="pui-head">
+            <h3>Weekly briefing</h3>
+            <span class="pui-biz">Example business</span>
+          </div>
+
+          <div class="pui-tabs" data-tabs>
+            <button class="pui-tab" type="button" data-tab="stage-notice">01 / Notice</button>
+            <button class="pui-tab" type="button" data-tab="stage-decide">02 / Decide</button>
+            <button class="pui-tab" type="button" data-tab="stage-learn">03 / Learn</button>
+          </div>
+          <div class="pui-panel" id="stage-notice">
+            <div class="pui-split">
+              <div>
+                <h4 class="pui-h">Your quietest lunch service is Thursday.</h4>
+                <p class="pui-p">Your sales show fewer Thursday lunch orders than the other weekdays.</p>
+                <div class="pui-field">
+                  <p class="pui-label">What Alfredo suggests</p>
+                  <p class="pui-rec">Consider bringing back a Thursday lunch offer.</p>
+                </div>
+                <p class="pui-meta">
+                  <span>Effort <b>Low</b></span>
+                  <span>Risk <b>Low</b></span>
+                </p>
+              </div>
+              <div>
+                <p class="pui-label">Lunch orders by weekday</p>
+                <ul class="pui-chart" role="img" aria-label="A drawing of five weekday bars with Thursday the shortest. It shows shape only and has no scale.">
+                  <li class="tall"><i aria-hidden="true"></i><span>Mon</span></li>
+                  <li class="mid"><i aria-hidden="true"></i><span>Tue</span></li>
+                  <li class="tall"><i aria-hidden="true"></i><span>Wed</span></li>
+                  <li class="short"><i aria-hidden="true"></i><span>Thu</span></li>
+                  <li class="tall"><i aria-hidden="true"></i><span>Fri</span></li>
+                </ul>
+                <p class="pui-caption">Relative shape only. No figures sit behind this drawing, so it carries no scale.</p>
+              </div>
+            </div>
+          </div>
+          <div class="pui-panel" id="stage-decide">
+            <div class="pui-split">
+              <div>
+                <h4 class="pui-h">Try a Thursday lunch offer.</h4>
+                <p class="pui-p">A small, reversible change. Choose whether it fits your business.</p>
+                <dl class="pui-dl">
+                  <div><dt>Why this was suggested</dt><dd>Thursday lunch has been your quietest weekday service for several weeks running, and nothing on the menu changed in that time.</dd></div>
+                  <div><dt>What you could try</dt><dd>A set lunch on Thursdays only, at the price you already use the rest of the week.</dd></div>
+                  <div><dt>What to watch</dt><dd>Whether Thursday covers come up without pulling guests off the other weekdays.</dd></div>
+                  <div><dt>When to review</dt><dd>Four weeks from the day you start.</dd></div>
+                </dl>
+              </div>
+              <div class="pui-aside">
+                <p class="sr-only">Sample controls, shown to illustrate the choice. They do nothing on this page.</p>
+                <p class="pui-controls" aria-hidden="true">
+                  <span class="pui-btn pui-btn-go">Try this</span>
+                  <span class="pui-btn pui-btn-no">Not right now</span>
+                </p>
+                <p class="pui-note"><b>Alfredo recommends. You decide.</b> Nothing on your menu moves until you say so, and anything you try can be put back.</p>
+              </div>
+            </div>
+          </div>
+          <div class="pui-panel" id="stage-learn">
+            <div class="pui-split">
+              <div>
+                <h4 class="pui-h">See what happened.</h4>
+                <p class="pui-p">Four weeks on, Alfredo comes back with one of three answers. It is as willing to tell you the change did nothing as to tell you it worked.</p>
+                <div class="pui-field">
+                  <p class="pui-label">What the four weeks said</p>
+                  <p class="pui-rec">The Thursday lunch offer ran for four weeks. Thursday covers came up and held, and the other weekdays did not fall. After what you would have made anyway.</p>
+                </div>
+                <p class="pui-caption" style="margin-top:16px">If four weeks is not enough to call it, Alfredo says so rather than guess.</p>
+              </div>
+              <ul class="pui-verdicts">
+                <li class="pui-verdict is-result">
+                  <i aria-hidden="true"></i>
+                  <span><b>Worked.</b> The change did what it was meant to do.</span><em>This result</em>
+                </li>
+                <li class="pui-verdict">
+                  <i aria-hidden="true"></i>
+                  <span><b>No effect.</b> Nothing moved. Worth knowing, and worth stopping.</span>
+                </li>
+                <li class="pui-verdict">
+                  <i aria-hidden="true"></i>
+                  <span><b>Backfired.</b> It went the other way, so put it back.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="pillar">
-        <div class="pillar-dot" style="background:var(--champagne)"></div>
-        <h3>The menu lab</h3>
-        <p>A working copy of your menu you can experiment on, where any edit becomes a small, measured trial in four clicks. For businesses that share their recipe costs, Alfredo also connects what each dish costs to make with what it sells for. <a class="more" href="product.html#menu">Inside the lab →</a></p>
+    </div>
+    <p class="pui-disclosure">Illustrative product walkthrough. Not live customer data.</p>
+    <section class="v6-action-center" aria-labelledby="v6-actions-title">
+      <div class="v6-action-top">
+        <div>
+          <p class="eyebrow">The Action Center</p>
+          <h3 id="v6-actions-title">The next good move starts here.</h3>
+        </div>
+        <span class="v6-demo-label">Illustrative examples, not customer data</span>
       </div>
-      <div class="pillar">
-        <div class="pillar-dot" style="background:var(--ink)"></div>
-        <h3>Competitive intel</h3>
-        <p>Who is around you, what they charge, and what their customers keep saying. Photograph a competitor menu and get it matched against your own sales. <a class="more" href="product.html#intel">See the intel →</a></p>
+      <div class="v6-action-grid">
+        <article class="v6-action-card">
+          <header><span class="v6-card-id">01 / Service pattern</span><span class="v6-pill">Review</span></header>
+          <h4>Give Thursday lunch a closer look.</h4>
+          <p>Compare weekday lunch orders and explore whether a limited Thursday offer makes sense for your business.</p>
+          <footer><span>Effort: Low</span><span>Owner decides</span></footer>
+        </article>
+        <article class="v6-action-card">
+          <header><span class="v6-card-id">02 / Menu pairing</span><span class="v6-pill">Explore</span></header>
+          <h4>Find the pairings guests already love.</h4>
+          <p>Look for food and drink combinations in existing receipts before deciding whether to suggest a bundle.</p>
+          <footer><span>Effort: To assess</span><span>Owner decides</span></footer>
+        </article>
+        <article class="v6-action-card">
+          <header><span class="v6-card-id">03 / Measured test</span><span class="v6-pill">Pending</span></header>
+          <h4>Know when a change has earned its place.</h4>
+          <p>Set a review date before you start. Alfredo reports what the completed test supports, including no clear effect.</p>
+          <footer><span>Result: Pending</span><span>Owner decides</span></footer>
+        </article>
       </div>
-      <div class="pillar">
-        <div class="pillar-dot" style="background:var(--gold)"></div>
-        <h3>Ask Alfredo</h3>
-        <p>A chat panel inside every tab. Ask how the week is going in plain language and get answers from your own data. <a class="more" href="product.html#chat">Try the demo →</a></p>
+    </section>
+  </div>
+</section>
+<section class="section paper-light">
+  <div class="wrap">
+    <div class="proof-head reveal">
+      <p class="eyebrow">04 / The outcome</p>
+      <h2 class="h2">Not another dashboard. An answer.</h2>
+      <p class="lead">Alfredo does not just suggest a change and disappear. It helps you understand whether the change worked, did nothing, or made things worse.</p>
+    </div>
+    <p class="ledger-label"><span class="tag-sample">Illustrative examples</span></p>
+    <div class="ledger">
+      <div class="ledger-row">
+        <p class="ledger-state ledger-worked">Worked</p>
+        <p class="ledger-what">House lager promotion</p>
+        <p class="ledger-why">An illustrative example of a change that improved results.</p>
       </div>
+      <div class="ledger-row">
+        <p class="ledger-state ledger-none">No effect</p>
+        <p class="ledger-what">Calamari moved higher on the menu</p>
+        <p class="ledger-why">The test found no meaningful improvement.</p>
+      </div>
+      <div class="ledger-row">
+        <p class="ledger-state ledger-back">Backfired</p>
+        <p class="ledger-what">Happy hour shifted later</p>
+        <p class="ledger-why">The revised hours performed worse, so the change was reversed.</p>
+      </div>
+    </div>
+    <p class="proof-statement">Alfredo recommends. <em>You decide.</em></p>
+  </div>
+</section>
+<section class="section sand">
+  <div class="wrap">
+    <div class="places-head reveal">
+      <p class="eyebrow">05 / Built for hospitality</p>
+      <h2 class="h2">Different places. The same ambition to do better.</h2>
+      <p class="lead">Whether you run a neighborhood café, a busy bar, an independent bakery, a brewery or a multi location restaurant group, your business has decisions worth understanding.</p>
+    </div>
+    <div class="places">
+      <figure class="place pl-restaurant">
+        <div class="place-img">
+          <picture>
+            <source type="image/webp" sizes="(max-width: 860px) 46vw, 30vw"
+                    srcset="assets/restaurant-kitchen-320.webp 320w, assets/restaurant-kitchen-480.webp 480w, assets/restaurant-kitchen-640.webp 640w, assets/restaurant-kitchen-960.webp 960w">
+            <img src="assets/restaurant-kitchen-480.jpg" alt="A cook finishing a dish on a kitchen pass."
+                 width="480" height="640" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <figcaption>Restaurants</figcaption>
+      </figure>
+      <figure class="place pl-bar">
+        <div class="place-img">
+          <picture>
+            <source type="image/webp" sizes="(max-width: 860px) 46vw, 30vw"
+                    srcset="assets/bar-320.webp 320w, assets/bar-480.webp 480w, assets/bar-640.webp 640w, assets/bar-960.webp 960w">
+            <img src="assets/bar-480.jpg" alt="A bar at night, a drink on the counter and bottles lit behind it."
+                 width="480" height="640" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <figcaption>Bars</figcaption>
+      </figure>
+      <figure class="place pl-brewery">
+        <div class="place-img">
+          <picture>
+            <source type="image/webp" sizes="(max-width: 860px) 46vw, 30vw"
+                    srcset="assets/brewery-320.webp 320w, assets/brewery-480.webp 480w, assets/brewery-640.webp 640w, assets/brewery-960.webp 960w">
+            <img src="assets/brewery-480.jpg" alt="A brewer holding a glass of beer up to the light beside the tanks."
+                 width="480" height="640" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <figcaption>Breweries</figcaption>
+      </figure>
+      <figure class="place pl-bakery">
+        <div class="place-img">
+          <picture>
+            <source type="image/webp" sizes="(max-width: 860px) 46vw, 30vw"
+                    srcset="assets/bakery-320.webp 320w, assets/bakery-480.webp 480w, assets/bakery-640.webp 640w, assets/bakery-960.webp 960w">
+            <img src="assets/bakery-480.jpg" alt="A baker shaping dough on a floured bench beside racks of bread."
+                 width="480" height="640" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <figcaption>Cafés & bakeries</figcaption>
+      </figure>
     </div>
   </div>
 </section>
-
-<section class="interlude">
+<section class="section paper">
   <div class="wrap">
-    <span class="kicker">The difference</span>
-    <p class="interlude-lead">"Why is Tuesday <span class="hl">slow?</span>"</p>
-    <p class="section-lede">A dashboard hands you charts and leaves the interpretation to you.<br>
-    A consultant hands you a ten slide deck of findings, too much information for a simple question.<br>
-    <strong style="color:var(--ink);">Alfredo tells you what happened, why it happened, and how you can fix it. All in one place.</strong> And then it checks whether the fix worked.</p>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <span class="kicker">Nothing new to buy</span>
-    <h2 class="section-title">Works with what you already have.</h2>
-    <p class="section-lede">You already run the kitchen, the floor, the schedule, and the books. You should not need a statistics degree to understand your own business. That is Alfredo's job now. No new hardware. No new software subscriptions to layer on. Alfredo connects to the POS you already run and does the rest. If your POS system rings your sales, Alfredo can work for you: restaurants, bars, cafes, bakeries, food trucks.</p>
-    <div class="status-grid">
-      <div class="stat-card">
-        <div class="big">Zero install</div>
-        <p>Alfredo reads your existing Toast or Clover data. There is nothing to install at the register and no retraining for your staff.</p>
-      </div>
-      <div class="stat-card">
-        <div class="big">One place for everything</div>
-        <p>Your sales, your menu, your guests, and your competitive picture in one view, instead of five tabs and a spreadsheet.</p>
-      </div>
-      <div class="stat-card">
-        <div class="big">Insights on top</div>
-        <p>Alfredo is not another dashboard to check. It reads the data for you and hands you the recommendations worth trying.</p>
-      </div>
+    <div class="trust-head reveal">
+      <hr class="trust-accent" aria-hidden="true">
+      <p class="eyebrow">06 / Built on honesty</p>
+      <h2 class="h2">We do not make up numbers.</h2>
+      <p class="body">If Alfredo does not have enough information to know whether something worked, it says so. Not every experiment succeeds. Every useful experiment teaches you something.</p>
     </div>
+    <ul class="trust-list">
+      <li>No invented figures.</li>
+      <li>No pretending a test worked.</li>
+      <li>No changing your business without you.</li>
+    </ul>
+    <p class="trust-more"><a class="textlink" href="honesty.html">Read our approach to trust</a></p>
   </div>
 </section>
-
-<section>
-  <div class="wrap">
-    <span class="kicker">Where we are</span>
-    <h2 class="section-title">Early, and honest about it.</h2>
-    <div class="status-grid">
-      <div class="stat-card">
-        <div class="big">Live in <span class="mango-txt">production</span></div>
-        <p>Tested with a brewpub and live across a 14 location restaurant chain: real transactions, live weekly boards, real trials with real verdicts.</p>
-      </div>
-      <div class="stat-card">
-        <div class="big">Patent <span class="mango-txt">pending</span></div>
-        <p>Alfredo is patent pending with the USPTO.</p>
-      </div>
-      <div class="stat-card">
-        <div class="big">Pilot <span class="mango-txt">seats open</span></div>
-        <p>We are onboarding a small number of independents as design partners. <a class="more" href="pilot.html">How we work with you →</a></p>
-      </div>
-    </div>
+<section class="section invite darkest">
+  <div class="invite-photo" aria-hidden="true">
+    <picture>
+      <source type="image/webp" sizes="100vw"
+              srcset="assets/bar-640.webp 640w, assets/bar-960.webp 960w">
+      <img src="assets/bar-960.jpg" alt="" width="960" height="1200" loading="lazy" decoding="async">
+    </picture>
   </div>
-</section>
-
-<section class="cta-band">
+  <div class="invite-veil" aria-hidden="true"></div>
   <div class="wrap">
-    <div class="cta-box">
-      <div>
-        <h2>Run Alfredo on your data. Judge it by its verdicts.</h2>
-        <p>Pilot partners get the full platform on their own POS data, direct access to the founder, and pricing that reflects being early.</p>
-      </div>
-      <div class="cta-actions">
-        <a class="btn mango" href="pilot.html#pilot">Request a demo</a>
-        <span class="cta-fine">Works with your existing POS system, from single locations to multi location groups, with nothing new to install.</span>
+    <div class="invite-inner">
+      <p class="eyebrow">The next chapter</p>
+      <h2 class="h2">Your next chapter starts with better decisions.</h2>
+      <p class="invite-sub">See what Alfredo could uncover in your business.</p>
+      <div class="actions">
+        <a class="btn" href="pilot.html#pilot">Request a demo</a>
+        <a class="textlink" href="product.html">Explore what Alfredo does</a>
       </div>
     </div>
   </div>
@@ -194,12 +352,43 @@
 
 </main>
 
-<footer>
-  <div class="foot-inner">
-    <a class="wordmark" href="index.html" style="font-size:1.2rem;">alfredo<span class="dot">·</span></a>
-    <p>© 2026 Alfredo, a BakingInsights AI product · patent pending · we do not inflate numbers</p>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <a class="wordmark" href="index.html">
+          <img src="alfredo_logo_cream.svg" alt="Alfredo" width="3909" height="1484" decoding="async">
+        </a>
+      </div>
+      <nav aria-label="Footer">
+        <ul>
+          <li><a href="product.html">What it does</a></li>
+          <li><a href="honesty.html">Why trust it</a></li>
+          <li><a href="pilot.html">About us</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="https://app.bakinginsightsai.com">Log in</a></li>
+        </ul>
+      </nav>
+      <div class="contact">
+        <p class="contact-h">Get in touch</p>
+        <a href="mailto:contact@bakinginsightsai.com">contact@bakinginsightsai.com</a>
+        <a class="social" href="https://www.instagram.com/alfredobybia/" target="_blank" rel="noopener" aria-label="Alfredo on Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .48 1.4.9.4.4.68.8.9 1.4.17.4.37 1 .42 2.2.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.05 1.2-.25 1.8-.42 2.2-.22.6-.5 1-.9 1.4-.4.4-.8.68-1.4.9-.4.17-1 .37-2.2.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.05-1.8-.25-2.2-.42-.6-.22-1-.5-1.4-.9-.4-.4-.68-.8-.9-1.4-.17-.4-.37-1-.42-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.05-1.2.25-1.8.42-2.2.22-.6.5-1 .9-1.4.4-.4.8-.68 1.4-.9.4-.17 1-.37 2.2-.42C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.1 0-3.5 0-4.7.07-1.1.05-1.7.24-2.1.4-.5.2-.9.44-1.3.84-.4.4-.64.8-.84 1.3-.16.4-.35 1-.4 2.1C2.6 9.9 2.6 10.3 2.6 12s0 2.1.06 3.3c.05 1.1.24 1.7.4 2.1.2.5.44.9.84 1.3.4.4.8.64 1.3.84.4.16 1 .35 2.1.4 1.2.06 1.6.07 4.7.07s3.5 0 4.7-.07c1.1-.05 1.7-.24 2.1-.4.5-.2.9-.44 1.3-.84.4-.4.64-.8.84-1.3.16-.4.35-1 .4-2.1.06-1.2.07-1.6.07-3.3s0-2.1-.07-3.3c-.05-1.1-.24-1.7-.4-2.1-.2-.5-.44-.9-.84-1.3-.4-.4-.8-.64-1.3-.84-.4-.16-1-.35-2.1-.4C15.5 4 15.1 4 12 4Zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8Zm0 1.8a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2Zm5.1-.4a1.15 1.15 0 1 1 0-2.3 1.15 1.15 0 0 1 0 2.3Z"/></svg>
+          @alfredobybia
+        </a>
+        <a class="social" href="https://www.facebook.com/alfredobybia" target="_blank" rel="noopener" aria-label="Alfredo on Facebook">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.45 2.89h-2.33v6.99A10 10 0 0 0 22 12Z"/></svg>
+          @alfredobybia
+        </a>
+      </div>
+    </div>
+    <div class="footer-foot">
+      <p>© 2026 Alfredo, a BakingInsights AI product. Patent pending. We do not inflate numbers.</p>
+      <p class="disclosure">Images are AI generated for illustration. No person or business shown is real.</p>
+    </div>
   </div>
 </footer>
 
+<script src="alfredo.js" defer></script>
 </body>
 </html>
