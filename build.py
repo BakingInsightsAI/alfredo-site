@@ -27,6 +27,36 @@ TEMPLATES = SRC / "templates"
 DATA = SRC / "data"
 
 
+# Files that sit at the root, are served exactly as they are, and are
+# rendered from nothing. Search Console checks the file below byte for
+# byte and withdraws the site's verification if it changes or disappears,
+# so build.py must never write it and never remove it. It checks it
+# instead: missing or altered is a build failure, because a file nothing
+# renders is a file a bulk copy can quietly take away.
+VERBATIM = {
+    "google01448de1468a5073.html":
+        "google-site-verification: google01448de1468a5073.html\n",
+}
+
+
+def check_verbatim():
+    """Report on the served as they are files. Nothing here is written."""
+    problems = []
+    for name in sorted(VERBATIM):
+        want = VERBATIM[name]
+        path = ROOT / name
+        if not path.exists():
+            problems.append(f"{name} is missing from the site root")
+            status = "MISSING"
+        elif path.read_text(encoding="utf-8") != want:
+            problems.append(f"{name} is not the file it has to be")
+            status = "ALTERED"
+        else:
+            status = "verbatim, untouched"
+        print(f"  {name:<30} {len(want):>7} bytes  {status}")
+    return problems
+
+
 def load_data():
     """Every .yaml in src/data becomes a top level variable named after the file."""
     data = {}
@@ -63,6 +93,7 @@ def main():
 
     data = load_data()
     rendered = render_all(data)
+    problems = check_verbatim()
 
     drifted = []
     for name, text in sorted(rendered.items()):
@@ -78,6 +109,14 @@ def main():
             status = "written"
         print(f"  {name:<16} {len(text):>7} bytes  {status}")
 
+    if problems:
+        print()
+        print("A file that is served exactly as it is has been disturbed:")
+        for problem in problems:
+            print(f"  - {problem}")
+        print()
+        print("Put it back as it was. build.py does not write these files.")
+        return 1
     if args.check and drifted:
         print()
         print("Rendered output does not match the committed files:")
