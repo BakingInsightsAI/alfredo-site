@@ -5,6 +5,12 @@ form_subject: "Demo request from bakinginsightsai.com"
 web3forms_key: "6ce52bfe-d286-44ff-992c-bb7565c31fb6"
 app_url: "https://app.bakinginsightsai.com"
 
+# Cloudflare Web Analytics: free, cookieless, and it reports the referrer,
+# which is how a visit that arrived from an AI search tool becomes visible.
+# The beacon renders only when this is set and only when staging is false,
+# so a staging visit is never counted as a reader.
+analytics_token: "ffcafa6e6d0c4d6cb2c519c7fc777fa6"
+
 # How many founding places are still open. This is the only place the
 # number is written: the home panel and the pricing offer both read it, so
 # when a spot fills, one edit updates every page.

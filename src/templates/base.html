@@ -119,5 +119,13 @@
 </footer>
 
 <script src="alfredo.js" defer></script>
+{#- Visitor counts. Cookieless, and it reports which site a visit came
+    from, which is the only way a visit from an AI search tool becomes
+    visible. Deferred, so it is fetched after the page is usable and
+    cannot delay it. It is rendered only on the live site: a staging
+    visit is one of us, and would be counted as a reader. #}
+{%- if site.analytics_token and not site.staging %}
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "{{ site.analytics_token }}"}'></script>
+{%- endif %}
 </body>
 </html>
